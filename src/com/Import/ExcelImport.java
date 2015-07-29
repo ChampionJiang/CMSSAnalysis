@@ -1,9 +1,6 @@
 package com.Import;
 
-import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,10 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -90,11 +84,11 @@ public class ExcelImport {
 	                    cellNovalue = String.valueOf(dcellNovalue);  
 	                } catch (IllegalStateException e2) {  
 	                    cellNovalue = "";  
-	                    e.printStackTrace();  
+	                    //e.printStackTrace();  
 	                }  
 	            } catch (Exception e3) {  
 	                cellNovalue = "";  
-	                e3.printStackTrace();  
+	                //e3.printStackTrace();  
 	            }  
 
 	           res.add(cellNovalue);				
