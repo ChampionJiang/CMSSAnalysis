@@ -1,6 +1,7 @@
 package com.Storage;
 
 
+import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -34,7 +35,13 @@ public class MyColumn <Type> extends Column implements Serializable{
 	@Override
 	public <T> void setData(int r, T val) {
 		// TODO Auto-generated method stub
-		data.set(r, (Type) val);
+		data.add(r, (Type) val);
+	}
+
+	@Override
+	public void Print(int r, PrintStream s) {
+		// TODO Auto-generated method stub
+		s.print(data.get(r));
 	}
 	
 }

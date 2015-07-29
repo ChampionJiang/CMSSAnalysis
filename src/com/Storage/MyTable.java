@@ -18,6 +18,18 @@ public class MyTable implements Serializable {
 		columns = new LinkedList<Column>();
 	}
 	
+	public void Print()
+	{
+		for (int i = 0; i < rowCount; i++) {
+			for(Column c: columns)
+			{
+				c.Print(i, System.out);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
+	}
+	
 	public Column AddColumn(MyColumn.DataType dt)
 	{
 		Column col = ColumnFactory.CreateColumn(dt, rowCount);
@@ -40,8 +52,10 @@ public class MyTable implements Serializable {
 			
 			for(int j = 0; j < 10; j++)
 			{
-				col.setData(j, rdm.nextInt());
+				col.setData(j, rdm.nextDouble()*100);
 			}
 		}
+		
+		mt.Print();
 	}
 }
