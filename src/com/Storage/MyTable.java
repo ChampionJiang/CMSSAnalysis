@@ -1,6 +1,7 @@
 package com.Storage;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -10,6 +11,7 @@ public class MyTable implements Serializable {
 	 */
 	private static final long serialVersionUID = -4054049728149338294L;
 	private LinkedList<Column> columns;
+	
 	private int rowCount;
 	
 	public MyTable(int r)
@@ -43,7 +45,7 @@ public class MyTable implements Serializable {
 		MyTable mt = new MyTable(10);
 		
 		Random rdm = new Random();
-		MyColumn.DataType dt[] = {MyColumn.DataType.INTEGER, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
+		MyColumn.DataType dt[] = {MyColumn.DataType.STRING, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
 		
 		for (int i = 0; i < 3; i++)
 		{
@@ -57,5 +59,6 @@ public class MyTable implements Serializable {
 		}
 		
 		mt.Print();
+		
 	}
 }

@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.Object.ReportInstance;
+
 import jspSmart.File;
 import jspSmart.SmartUpload;
 
@@ -27,6 +29,8 @@ public class ExcelImport {
 	protected XSSFWorkbook m_workbook;
 	XSSFSheet m_currentsheet;
 	protected SmartUpload m_su;
+	
+	private ReportInstance reportInstance;
 	
 	public final void initialize(PageContext pagecontext) throws ServletException {
 		m_application = pagecontext.getServletContext();
