@@ -80,11 +80,18 @@ public class ExcelImport {
 		for (int i = 0; i < last; i++)
 		{
 			XSSFCell cell = row.getCell(i);
+//			try {
+//				cellNovalue = cell.getRawValue();
+//			} catch (Exception e)
+//			{
+//				cellNovalue = "";
+//			}
 			try {  
 	               cellNovalue = cell.getStringCellValue();  
 	           } catch (IllegalStateException e) {  
 	                try {  
 	                    double dcellNovalue = cell.getNumericCellValue();  
+	   
 	                    cellNovalue = String.valueOf(dcellNovalue);  
 	                } catch (IllegalStateException e2) {  
 	                    cellNovalue = "";  

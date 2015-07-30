@@ -11,13 +11,37 @@ public class MyTable implements Serializable {
 	 */
 	private static final long serialVersionUID = -4054049728149338294L;
 	private LinkedList<Column> columns;
+	private boolean initialized;
 	
 	private int rowCount;
 	
 	public MyTable(int r)
 	{
+		initialized = false;
+		try {
+			init(r);
+		} catch (ObjectAlreadyInitializedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public MyTable()
+	{
+		initialized = false;
+		rowCount = -1;
+		columns = null;
+	}
+	
+	public void init(int r) throws ObjectAlreadyInitializedException
+	{
+		if (initialized)
+			throw new ObjectAlreadyInitializedException("MyTable");
+			
 		rowCount = r;
 		columns = new LinkedList<Column>();
+		
+		initialized = true;
 	}
 	
 	public void Print()
@@ -49,7 +73,6 @@ public class MyTable implements Serializable {
 		
 		for (int i = 0; i < 3; i++)
 		{
-			@SuppressWarnings("unchecked")
 			Column col = mt.AddColumn(dt[i]);
 			
 			for(int j = 0; j < 10; j++)

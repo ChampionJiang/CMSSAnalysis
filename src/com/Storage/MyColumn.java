@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyColumn <Type> extends Column implements Serializable{
+public class MyColumn extends Column implements Serializable{
 	public static enum DataType {
 		INTEGER,
 		DOUBLE,
@@ -27,7 +27,7 @@ public class MyColumn <Type> extends Column implements Serializable{
 		type = t;
 	}
 	
-	public void SetData(int r, Type v)
+	public void SetData(int r, Object v)
 	{
 		data[r] = v;
 	}

@@ -6,6 +6,11 @@ public class ReportInstance {
 	private MyTable table;
 
 	public MyTable getTable() {
+		
+		if (table == null)
+		{
+			table = new MyTable();
+		}
 		return table;
 	}
 

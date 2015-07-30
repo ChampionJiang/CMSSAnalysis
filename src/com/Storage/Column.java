@@ -1,6 +1,7 @@
 package com.Storage;
 
 import java.io.PrintStream;
+import java.util.UUID;
 
 public abstract class Column {
 	enum ColumnType{
@@ -9,6 +10,8 @@ public abstract class Column {
 	}
 	private String name;
 	private ColumnType type;
+	private UUID id;
+	
 	public abstract <T> void setData(int r, T val);
 	public abstract void Print(int r, PrintStream s);
 	public String getName() {
