@@ -16,12 +16,13 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.Object.ReportInstance;
+import com.Connector.Connector;
+import com.Storage.MyTable;
 
 import jspSmart.File;
 import jspSmart.SmartUpload;
 
-public class ExcelImport {
+public class ExcelImport implements Connector {
 	protected byte m_binArray[];
 	protected HttpServletRequest m_request;
 	protected HttpServletResponse m_response;
@@ -29,8 +30,6 @@ public class ExcelImport {
 	protected XSSFWorkbook m_workbook;
 	XSSFSheet m_currentsheet;
 	protected SmartUpload m_su;
-	
-	private ReportInstance reportInstance;
 	
 	public final void initialize(PageContext pagecontext) throws ServletException {
 		m_application = pagecontext.getServletContext();
@@ -154,5 +153,11 @@ public class ExcelImport {
 	public static void main(String[] args)
 	{
 		ReadAndPrintExcelFile("test.xlsx","sheet1");  
+	}
+
+	@Override
+	public void Transform(MyTable table) {
+		// TODO Auto-generated method stub
+		
 	}
 }
