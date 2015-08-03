@@ -17,7 +17,9 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.Connector.Connector;
+import com.Storage.MyColumn;
 import com.Storage.MyTable;
+import com.Storage.ObjectAlreadyInitializedException;
 
 import jspSmart.File;
 import jspSmart.SmartUpload;
@@ -153,11 +155,58 @@ public class ExcelImport implements Connector {
 	public static void main(String[] args)
 	{
 		ReadAndPrintExcelFile("test.xlsx","sheet1");  
+		//ExcelImport ei = new ExcelImport();
 	}
 
 	@Override
-	public void Transform(MyTable table) {
+	public void Transform(MyTable table) throws ObjectAlreadyInitializedException {
 		// TODO Auto-generated method stub
+		int rows = this.getNumOfRows();
+		table.init(rows);
 		
+		if (rows == 0)
+			return;
+		
+		// assume the first row defines the header, i.e. the names of each column
+		XSSFRow row = m_currentsheet.getRow(0);
+		int cols = row.getLastCellNum();
+		
+		MyColumn.DataType dt[] = new MyColumn.DataType[cols];
+		// need a way to figure out the datatypes of each column
+		for (int c = 0; c < cols; c++)
+		{
+			table.AddColumn(dt[c]);
+		}
+		
+		// ok, we've created the columns, let's fill in the data
+		
+		for (int r = 1; r < rows; r++)
+		{
+			row = m_currentsheet.getRow(r);
+			
+			for (int c = 0; c < cols; c++)
+			{
+				XSSFCell cell = row.getCell(c);
+				String sVal = "";
+				try {
+				sVal = cell.getStringCellValue();
+				
+				}
+				catch (IllegalStateException e)
+				{
+					try{
+					double val = cell.getNumericCellValue();
+					sVal = String.valueOf(val);
+					} catch (Exception e2) 
+					{
+						sVal="";
+				}
+			} catch (Exception e3) {  
+				sVal = "";  
+                //e3.printStackTrace();  
+            }  
+				table.getColumn(c).setData(r, sVal);
+			}
+		}
 	}
 }

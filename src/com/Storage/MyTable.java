@@ -1,7 +1,7 @@
 package com.Storage;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MyTable implements Serializable {
@@ -9,7 +9,7 @@ public class MyTable implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -4054049728149338294L;
-	private LinkedList<Column> columns;
+	private ArrayList<Column> columns;
 	private boolean initialized;
 	
 	private int rowCount;
@@ -38,7 +38,7 @@ public class MyTable implements Serializable {
 			throw new ObjectAlreadyInitializedException("MyTable");
 			
 		rowCount = r;
-		columns = new LinkedList<Column>();
+		columns = new ArrayList<Column>();
 		
 		initialized = true;
 	}
@@ -62,6 +62,11 @@ public class MyTable implements Serializable {
 		columns.add(col);
 		
 		return col;
+	}
+	
+	public Column getColumn(int idx)
+	{
+		return columns.get(idx);
 	}
 	
 	public static void main(String args[]){
