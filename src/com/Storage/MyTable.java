@@ -45,7 +45,14 @@ public class MyTable implements Serializable {
 	
 	public void Print()
 	{
-		for (int i = 0; i < rowCount; i++) {
+		for (Column c: columns)
+		{
+			System.out.print(c.getName()+ " ");
+		}
+		System.out.println();
+		
+		int r = Math.min(100, rowCount);
+		for (int i = 0; i < r; i++) {
 			for(Column c: columns)
 			{
 				c.Print(i, System.out);

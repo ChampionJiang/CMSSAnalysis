@@ -3,6 +3,7 @@ package com.Import;
 import java.io.FileInputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.Connector.Connector;
+import com.Storage.Column;
 import com.Storage.MyColumn;
 import com.Storage.MyTable;
 import com.Storage.ObjectAlreadyInitializedException;
@@ -52,6 +54,7 @@ public class ExcelImport implements Connector {
 			
 			} catch (Exception e){
 			}
+		this.setCurrentSheet(0);
 	}
 	
 	public int getNumOfSheets()
@@ -159,13 +162,14 @@ public class ExcelImport implements Connector {
 	}
 
 	@Override
-	public void Transform(MyTable table) throws ObjectAlreadyInitializedException {
+	public MyTable Transform() throws ObjectAlreadyInitializedException {
 		// TODO Auto-generated method stub
 		int rows = this.getNumOfRows();
+		MyTable table = new MyTable();
 		table.init(rows);
 		
 		if (rows == 0)
-			return;
+			return table;
 		
 		// assume the first row defines the header, i.e. the names of each column
 		XSSFRow row = m_currentsheet.getRow(0);
@@ -175,7 +179,8 @@ public class ExcelImport implements Connector {
 		// need a way to figure out the datatypes of each column
 		for (int c = 0; c < cols; c++)
 		{
-			table.AddColumn(dt[c]);
+			Column col = table.AddColumn(dt[c]);
+			col.setName(row.getCell(c).getStringCellValue());
 		}
 		
 		// ok, we've created the columns, let's fill in the data
@@ -205,8 +210,16 @@ public class ExcelImport implements Connector {
 				sVal = "";  
                 //e3.printStackTrace();  
             }  
-				table.getColumn(c).setData(r, sVal);
+				table.getColumn(c).setData(r-1, sVal);
 			}
 		}
+		
+		return table;
+	}
+
+	@Override
+	public List<String> showColumnNames() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
