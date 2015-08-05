@@ -11,7 +11,7 @@ import com.Storage.ObjectAlreadyInitializedException;
 public interface Connector {
 	enum ConnectorType{EXCEL, RMDB}
 	
-	public List<String> showColumnNames();
+	public List<String> getColumnNames();
 	public MyTable Transform() throws ObjectAlreadyInitializedException;
 	public void initialize(PageContext pagecontext) throws ServletException;
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -18,8 +19,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.Connector.Connector;
+import com.DB.DbDao;
 import com.Storage.Column;
 import com.Storage.MyColumn;
+//import com.Storage.MyColumm.DataType;
 import com.Storage.MyTable;
 import com.Storage.ObjectAlreadyInitializedException;
 
@@ -34,6 +37,8 @@ public class ExcelImport implements Connector {
 	protected XSSFWorkbook m_workbook;
 	XSSFSheet m_currentsheet;
 	protected SmartUpload m_su;
+	protected String sheetName;
+	DbDao dbdao;
 	
 	public final void initialize(PageContext pagecontext) throws ServletException {
 		m_application = pagecontext.getServletContext();
@@ -55,6 +60,10 @@ public class ExcelImport implements Connector {
 			} catch (Exception e){
 			}
 		this.setCurrentSheet(0);
+		
+		 dbdao = new DbDao("com.mysql.jdbc.Driver",
+				"jdbc:mysql://localhost:3306/ExcelImport","root","");
+
 	}
 	
 	public int getNumOfSheets()
@@ -65,6 +74,7 @@ public class ExcelImport implements Connector {
 	public void setCurrentSheet(int sheet)
 	{
 		m_currentsheet = m_workbook.getSheetAt(sheet);
+		sheetName = m_su.getFiles().getFile(0).getFileName() + m_currentsheet.getSheetName();
 	}
 	
 	public int getNumOfRows()
@@ -166,9 +176,9 @@ public class ExcelImport implements Connector {
 		// TODO Auto-generated method stub
 		int rows = this.getNumOfRows();
 		MyTable table = new MyTable();
-		table.init(rows);
+		table.init(rows-1);
 		
-		if (rows == 0)
+		if (rows <= 1)
 			return table;
 		
 		// assume the first row defines the header, i.e. the names of each column
@@ -181,6 +191,8 @@ public class ExcelImport implements Connector {
 		{
 			Column col = table.AddColumn(dt[c]);
 			col.setName(row.getCell(c).getStringCellValue());
+			
+			dt[c] = MyColumn.DataType.DOUBLE;
 		}
 		
 		// ok, we've created the columns, let's fill in the data
@@ -191,34 +203,50 @@ public class ExcelImport implements Connector {
 			
 			for (int c = 0; c < cols; c++)
 			{
+				Column col = table.getColumn(c);
+				String sVal = null;
+				double dVal = 0.0;
 				XSSFCell cell = row.getCell(c);
-				String sVal = "";
-				try {
-				sVal = cell.getStringCellValue();
-				
-				}
-				catch (IllegalStateException e)
-				{
-					try{
-					double val = cell.getNumericCellValue();
-					sVal = String.valueOf(val);
-					} catch (Exception e2) 
+				try{
+					switch(cell.getCellType())
 					{
-						sVal="";
+					case HSSFCell.CELL_TYPE_STRING:
+						{
+							sVal = cell.getStringCellValue();
+							col.setData(r-1, sVal);
+						}
+						break;
+					case HSSFCell.CELL_TYPE_BLANK:
+						col.setData(r-1, null);
+						break;
+					case HSSFCell.CELL_TYPE_NUMERIC:
+						{
+							dVal = cell.getNumericCellValue();
+							col.setData(r-1, dVal);
+						}
+						break;
+					default:
+						break;
+					}
 				}
-			} catch (Exception e3) {  
-				sVal = "";  
-                //e3.printStackTrace();  
-            }  
-				table.getColumn(c).setData(r-1, sVal);
-			}
+				catch (Exception e)
+				{
+					col.setData(r-1, null);
+				}
+			} 
 		}
+		
+		flushToDB(table);
 		
 		return table;
 	}
 
+	private void flushToDB(MyTable table)
+	{
+		//dbdao.modify(sql, args);
+	}
 	@Override
-	public List<String> showColumnNames() {
+	public List<String> getColumnNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -19,7 +19,7 @@ public class DBImport implements Connector{
 	}
 
 	@Override
-	public List<String> showColumnNames() {
+	public List<String> getColumnNames() {
 		// TODO Auto-generated method stub
 		return null;
 	}
