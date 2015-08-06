@@ -17,8 +17,8 @@ connector.initialize(pageContext);
 
 <%
 
-MyTable table = connector.Transform();
-table.Print();
+MyTable table = connector.Transform();%>
+<%=table.toString()
 	
 %>
 

@@ -76,23 +76,43 @@ public class MyTable implements Serializable {
 		return columns.get(idx);
 	}
 	
-	public static void main(String args[]){
-		MyTable mt = new MyTable(10);
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
 		
-		Random rdm = new Random();
-		MyColumn.DataType dt[] = {MyColumn.DataType.STRING, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
-		
-		for (int i = 0; i < 3; i++)
-		{
-			Column col = mt.AddColumn(dt[i]);
-			
-			for(int j = 0; j < 10; j++)
-			{
-				col.setData(j, rdm.nextDouble()*100);
-			}
+		for(Column c: columns) {
+			sb.append(c.getName() + " ");
+			sb.append(c.toString());
 		}
 		
-		mt.Print();
+		return sb.toString();
+	}
+	
+	public static void main(String args[]){
+		
+		Object o[] = new Object[4];
+		o[0] = "abc";
+		o[1] = 10;
+		
+		System.out.println(o[0].toString()+ "  " + o[1].toString());
+		return;
+//		MyTable mt = new MyTable(10);
+//		
+//		Random rdm = new Random();
+//		MyColumn.DataType dt[] = {MyColumn.DataType.STRING, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
+//		
+//		for (int i = 0; i < 3; i++)
+//		{
+//			Column col = mt.AddColumn(dt[i]);
+//			
+//			for(int j = 0; j < 10; j++)
+//			{
+//				col.setData(j, rdm.nextDouble()*100);
+//			}
+//		}
+//		
+//		mt.Print();
 		
 	}
 }

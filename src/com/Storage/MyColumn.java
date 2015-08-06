@@ -44,4 +44,20 @@ public class MyColumn extends Column implements Serializable{
 		s.print(data[r]);
 	}
 	
+	@Override
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder();
+		
+		for (Object o: data){
+			try{
+				sb.append(o.toString()+ " ");
+			} catch (Exception e)
+			{
+				sb.append("null ");
+			}
+		}
+		
+		return sb.toString();
+	}
 }
