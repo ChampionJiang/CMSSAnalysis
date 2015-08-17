@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class MyTable implements Serializable {
 	/**
 	 * 
@@ -89,30 +92,46 @@ public class MyTable implements Serializable {
 		return sb.toString();
 	}
 	
+	public String toJSON()
+	{
+		JSONObject table = new JSONObject();
+		table.put("name", "table upload");
+		JSONArray cols = new JSONArray();
+		for (int i = 0; i < columns.size(); i++){
+			Column c = columns.get(i);
+			JSONObject col = c.toJSON();
+			cols.put(col);
+		}
+		table.put("columns", cols);
+		JSONObject result = new JSONObject();
+		result.put("tb", table);
+		return result.toString();
+	}
+	
 	public static void main(String args[]){
 		
-		Object o[] = new Object[4];
-		o[0] = "abc";
-		o[1] = 10;
+//		Object o[] = new Object[4];
+//		o[0] = "abc";
+//		o[1] = 10;
+//		
+//		System.out.println(o[0].toString()+ "  " + o[1].toString());
+//		return;
+		MyTable mt = new MyTable(10);
 		
-		System.out.println(o[0].toString()+ "  " + o[1].toString());
-		return;
-//		MyTable mt = new MyTable(10);
-//		
-//		Random rdm = new Random();
-//		MyColumn.DataType dt[] = {MyColumn.DataType.STRING, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
-//		
-//		for (int i = 0; i < 3; i++)
-//		{
-//			Column col = mt.AddColumn(dt[i]);
-//			
-//			for(int j = 0; j < 10; j++)
-//			{
-//				col.setData(j, rdm.nextDouble()*100);
-//			}
-//		}
-//		
-//		mt.Print();
+		Random rdm = new Random();
+		MyColumn.DataType dt[] = {MyColumn.DataType.STRING, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
+		
+		for (int i = 0; i < 3; i++)
+		{
+			Column col = mt.AddColumn(dt[i]);
+			
+			for(int j = 0; j < 10; j++)
+			{
+				col.setData(j, rdm.nextDouble()*100);
+			}
+		}
+		
+		System.out.println(mt.toJSON());
 		
 	}
 }

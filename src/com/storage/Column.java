@@ -3,6 +3,9 @@ package com.storage;
 import java.io.PrintStream;
 import java.util.UUID;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public abstract class Column {
 	enum ColumnType{
 		ATTRIBUTE,
@@ -28,5 +31,9 @@ public abstract class Column {
 	}
 	public void setType(ColumnType type) {
 		this.type = type;
+	}
+	public JSONObject toJSON() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

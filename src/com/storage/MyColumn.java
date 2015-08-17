@@ -5,6 +5,9 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class MyColumn extends Column implements Serializable{
 	public static enum DataType {
 		INTEGER,
@@ -59,5 +62,19 @@ public class MyColumn extends Column implements Serializable{
 		}
 		
 		return sb.toString();
+	}
+	
+	@Override
+	public JSONObject toJSON()
+	{
+		JSONArray array = new JSONArray();
+		
+		for (int i = 0; i < data.length; i++){
+			array.put(data[i]);
+		}
+		
+		JSONObject obj = new JSONObject();
+		
+		return obj.put(this.getName(), array);
 	}
 }

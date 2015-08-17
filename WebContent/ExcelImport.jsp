@@ -18,7 +18,7 @@ connector.initialize(pageContext);
 <%
 
 MyTable table = connector.Transform();%>
-<%=table.toString()
+<%=table.toJSON()
 	
 %>
 
