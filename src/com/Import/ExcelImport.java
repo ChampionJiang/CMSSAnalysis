@@ -18,16 +18,14 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.Connector.Connector;
-import com.DB.DbDao;
-import com.Storage.Column;
-import com.Storage.MyColumn;
-//import com.Storage.MyColumm.DataType;
-import com.Storage.MyTable;
-import com.Storage.ObjectAlreadyInitializedException;
-
-import jspSmart.File;
-import jspSmart.SmartUpload;
+import com.connector.Connector;
+import com.db.DbDao;
+import com.jsp.smart.File;
+import com.jsp.smart.SmartUpload;
+import com.storage.Column;
+import com.storage.MyColumn;
+import com.storage.MyTable;
+import com.storage.ObjectAlreadyInitializedException;
 
 public class ExcelImport implements Connector {
 	protected byte m_binArray[];

@@ -1,4 +1,4 @@
-package com.Storage;
+package com.storage;
 
 public interface DataAccess {
 

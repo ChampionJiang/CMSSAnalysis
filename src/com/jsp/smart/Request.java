@@ -1,4 +1,4 @@
-package jspSmart;
+package com.jsp.smart;
 
 import java.util.Enumeration;
 import java.util.Hashtable;

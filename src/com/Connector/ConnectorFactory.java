@@ -1,4 +1,4 @@
-package com.Connector;
+package com.connector;
 
 import com.Import.DBImport;
 import com.Import.ExcelImport;

@@ -1,12 +1,12 @@
-package com.Connector;
+package com.connector;
 
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.jsp.PageContext;
 
-import com.Storage.MyTable;
-import com.Storage.ObjectAlreadyInitializedException;
+import com.storage.MyTable;
+import com.storage.ObjectAlreadyInitializedException;
 
 public interface Connector {
 	enum ConnectorType{EXCEL, RMDB}

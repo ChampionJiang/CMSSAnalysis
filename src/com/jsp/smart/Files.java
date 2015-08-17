@@ -1,4 +1,4 @@
-package jspSmart;
+package com.jsp.smart;
 
 import java.io.IOException;
 import java.util.*;

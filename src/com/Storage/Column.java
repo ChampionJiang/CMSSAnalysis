@@ -1,4 +1,4 @@
-package com.Storage;
+package com.storage;
 
 import java.io.PrintStream;
 import java.util.UUID;
@@ -12,7 +12,7 @@ public abstract class Column {
 	private ColumnType type;
 	private UUID id;
 	
-	public abstract <T> void setData(int r, T val);
+	public abstract <E> void setData(int r, E val);
 	public abstract void Print(int r, PrintStream s);
 	
 	public abstract String toString();

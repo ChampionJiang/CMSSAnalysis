@@ -1,4 +1,4 @@
-package jspSmart;
+package com.jsp.smart;
 
 import java.io.*;
 import java.sql.ResultSet;
@@ -143,7 +143,7 @@ public class SmartUpload {
 					throw new SecurityException("Total File Size exceeded (1110).");
 			}
 			if (flag3) {
-				jspSmart.File file = new jspSmart.File();
+				com.jsp.smart.File file = new com.jsp.smart.File();
 				file.setParent(this);
 				file.setFieldName(s3);
 				file.setFileName(s4);

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.jsp.PageContext;
 
-import com.Connector.Connector;
-import com.Storage.MyTable;
+import com.connector.Connector;
+import com.storage.MyTable;
 
 public class DBImport implements Connector{
 

@@ -1,4 +1,4 @@
-package jspSmart;
+package com.jsp.smart;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;

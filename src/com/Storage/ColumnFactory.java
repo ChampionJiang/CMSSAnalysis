@@ -1,4 +1,4 @@
-package com.Storage;
+package com.storage;
 
 public class ColumnFactory {
 	public static Column CreateColumn(MyColumn.DataType dt, int rowCount)

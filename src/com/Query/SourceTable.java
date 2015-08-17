@@ -1,4 +1,4 @@
-package com.Query;
+package com.query;
 
 import java.util.LinkedList;
 

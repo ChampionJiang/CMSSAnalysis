@@ -1,6 +1,6 @@
-package com.Object;
+package com.object;
 
-import com.Storage.MyTable;
+import com.storage.MyTable;
 
 public class ReportInstance {
 	private MyTable table;

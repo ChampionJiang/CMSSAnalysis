@@ -1,10 +1,10 @@
-package com.Query;
+package com.query;
 
 import java.util.LinkedList;
 
-import com.Object.ReportInstance;
-import com.Storage.MyTable;
-import com.Storage.ObjectAlreadyInitializedException;
+import com.object.ReportInstance;
+import com.storage.MyTable;
+import com.storage.ObjectAlreadyInitializedException;
 
 public class Populator {
 	private MyTable table;
