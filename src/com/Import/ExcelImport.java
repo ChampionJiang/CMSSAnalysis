@@ -1,10 +1,12 @@
 package com.Import;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,9 +31,6 @@ import com.storage.ObjectAlreadyInitializedException;
 
 public class ExcelImport implements Connector {
 	protected byte m_binArray[];
-	protected HttpServletRequest m_request;
-	protected HttpServletResponse m_response;
-	protected ServletContext m_application;
 	protected XSSFWorkbook m_workbook;
 	XSSFSheet m_currentsheet;
 	protected SmartUpload m_su;
@@ -39,29 +38,37 @@ public class ExcelImport implements Connector {
 	DbDao dbdao;
 	
 	public final void initialize(PageContext pagecontext) throws ServletException {
-		m_application = pagecontext.getServletContext();
-		m_request = (HttpServletRequest) pagecontext.getRequest();
-		m_response = (HttpServletResponse) pagecontext.getResponse();
 		
 		m_su = new SmartUpload();
 		
 		m_su.initialize(pagecontext);
 		
+		init();
+	}
+	
+	public final void initialize(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		m_su = new SmartUpload();
+		
+		m_su.service(request, response);
+		
+		init();
+	}
+	
+	private void init()
+	{
 		try {
 			m_su.setAllowedFilesList("xls,xlsx");
 			m_su.upload();
-			
-			File file = m_su.getFiles().getFile(0);
-			
-			m_workbook = new XSSFWorkbook(file.getInputStream());
-			
-			} catch (Exception e){
-			}
-		this.setCurrentSheet(0);
-		
-		 dbdao = new DbDao("com.mysql.jdbc.Driver",
-				"jdbc:mysql://localhost:3306/ExcelImport","root","");
 
+			File file = m_su.getFiles().getFile(0);
+
+			m_workbook = new XSSFWorkbook(file.getInputStream());
+
+		} catch (Exception e) {
+		}
+		
+		this.setCurrentSheet(0);
 	}
 	
 	public int getNumOfSheets()
@@ -206,7 +213,8 @@ public class ExcelImport implements Connector {
 				double dVal = 0.0;
 				XSSFCell cell = row.getCell(c);
 				try{
-					switch(cell.getCellType())
+					int cellType = cell.getCellType();
+					switch(cellType)
 					{
 					case HSSFCell.CELL_TYPE_STRING:
 						{
