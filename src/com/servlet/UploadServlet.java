@@ -1,5 +1,7 @@
 package com.servlet;
 
+import java.io.PrintWriter;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +39,13 @@ public class UploadServlet extends HttpServlet {
 		
 		try {
 			MyTable table = connector.Transform();
-			resp.getOutputStream().println(table.toJSON()+"  success  ");
+			//System.out.println(table.toJSON());
+			resp.setCharacterEncoding("utf-8");
+			resp.setContentType("application/json;charset=utf-8");
+			resp.setHeader("Cache-Control", "no-cache");
+			PrintWriter out = resp.getWriter();
+			out.println(table.toJSON());
+
 			
 			
 			
