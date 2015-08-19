@@ -36,4 +36,6 @@ public abstract class Column {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public abstract String getDataAsString(int r);
 }

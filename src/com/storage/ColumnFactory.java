@@ -1,9 +1,9 @@
 package com.storage;
 
 public class ColumnFactory {
-	public static Column CreateColumn(MyColumn.DataType dt, int rowCount)
+	public static Column CreateColumn(SimpleColumn.DataType dt, int rowCount)
 	{
-		Column result = new MyColumn(rowCount, dt);
+		Column result = new SimpleColumn(rowCount, dt);
 		
 //		switch(dt)
 //		{

@@ -1,5 +1,8 @@
 package com.storage;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
@@ -65,7 +68,7 @@ public class MyTable implements Serializable {
 		}
 	}
 	
-	public Column AddColumn(MyColumn.DataType dt)
+	public Column AddColumn(SimpleColumn.DataType dt)
 	{
 		Column col = ColumnFactory.CreateColumn(dt, rowCount);
 		
@@ -94,21 +97,24 @@ public class MyTable implements Serializable {
 	
 	public String toJSON()
 	{
-		JSONObject table = new JSONObject();
-		table.put("name", "table upload");
-		JSONArray cols = new JSONArray();
-		for (int i = 0; i < columns.size(); i++){
-			Column c = columns.get(i);
-			JSONObject col = c.toJSON();
-			cols.put(col);
+		JSONArray table = new JSONArray();
+		
+		
+		for (int r = 0; r < rowCount; r++){
+			JSONObject row = new JSONObject();
+			for (int c = 0; c < columns.size(); c++) {
+				Column col = columns.get(c);
+				
+				row.put(col.getName(), col.getDataAsString(r));
+				
+			}
+			table.put(row);
 		}
-		table.put("columns", cols);
-		JSONObject result = new JSONObject();
-		result.put("tb", table);
-		return result.toString();
+		
+		return table.toString();
 	}
 	
-	public static void main(String args[]){
+	public static void main(String args[]) throws IOException{
 		
 //		Object o[] = new Object[4];
 //		o[0] = "abc";
@@ -119,12 +125,13 @@ public class MyTable implements Serializable {
 		MyTable mt = new MyTable(10);
 		
 		Random rdm = new Random();
-		MyColumn.DataType dt[] = {MyColumn.DataType.STRING, MyColumn.DataType.DOUBLE, MyColumn.DataType.INTEGER};
+		SimpleColumn.DataType dt[] = {SimpleColumn.DataType.STRING, SimpleColumn.DataType.DOUBLE, SimpleColumn.DataType.INTEGER};
 		
 		for (int i = 0; i < 3; i++)
 		{
 			Column col = mt.AddColumn(dt[i]);
 			
+			col.setName("col"+i);
 			for(int j = 0; j < 10; j++)
 			{
 				col.setData(j, rdm.nextDouble()*100);
@@ -132,6 +139,15 @@ public class MyTable implements Serializable {
 		}
 		
 		System.out.println(mt.toJSON());
+		
+//		FileWriter fw = new FileWriter("WebContent\\app\\asset\\test\\test.json");
+//		BufferedWriter bw = new BufferedWriter(fw);
+//		
+//		bw.write(mt.toJSON());
+//		
+//		bw.flush();
+//		bw.close();
+//		fw.close();
 		
 	}
 }

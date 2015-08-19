@@ -25,7 +25,7 @@ import com.db.DbDao;
 import com.jsp.smart.File;
 import com.jsp.smart.SmartUpload;
 import com.storage.Column;
-import com.storage.MyColumn;
+import com.storage.SimpleColumn;
 import com.storage.MyTable;
 import com.storage.ObjectAlreadyInitializedException;
 
@@ -66,6 +66,7 @@ public class ExcelImport implements Connector {
 			m_workbook = new XSSFWorkbook(file.getInputStream());
 
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		this.setCurrentSheet(0);
@@ -190,14 +191,14 @@ public class ExcelImport implements Connector {
 		XSSFRow row = m_currentsheet.getRow(0);
 		int cols = row.getLastCellNum();
 		
-		MyColumn.DataType dt[] = new MyColumn.DataType[cols];
+		SimpleColumn.DataType dt[] = new SimpleColumn.DataType[cols];
 		// need a way to figure out the datatypes of each column
 		for (int c = 0; c < cols; c++)
 		{
 			Column col = table.AddColumn(dt[c]);
 			col.setName(row.getCell(c).getStringCellValue());
 			
-			dt[c] = MyColumn.DataType.DOUBLE;
+			dt[c] = SimpleColumn.DataType.DOUBLE;
 		}
 		
 		// ok, we've created the columns, let's fill in the data

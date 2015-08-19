@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MyColumn extends Column implements Serializable{
+public class SimpleColumn extends Column implements Serializable{
 	public static enum DataType {
 		INTEGER,
 		DOUBLE,
@@ -24,7 +24,7 @@ public class MyColumn extends Column implements Serializable{
 	Object [] data;
 	
 	
-	public MyColumn(int r, DataType t)
+	public SimpleColumn(int r, DataType t)
 	{
 		data = new Object[r];
 		type = t;
@@ -76,5 +76,11 @@ public class MyColumn extends Column implements Serializable{
 		JSONObject obj = new JSONObject();
 		
 		return obj.put(this.getName(), array);
+	}
+
+	@Override
+	public String getDataAsString(int r) {
+		// TODO Auto-generated method stub
+		return data[r] == null ? null : data[r].toString();
 	}
 }

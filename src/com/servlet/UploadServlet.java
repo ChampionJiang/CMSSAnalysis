@@ -1,6 +1,10 @@
 package com.servlet;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -45,10 +49,16 @@ public class UploadServlet extends HttpServlet {
 			resp.setHeader("Cache-Control", "no-cache");
 			PrintWriter out = resp.getWriter();
 			out.println(table.toJSON());
-
 			
+			FileWriter fw = new FileWriter("E:\\test.json");
+			BufferedWriter bw = new BufferedWriter(fw);
 			
+			bw.write(table.toJSON());
 			
+			bw.flush();
+			bw.close();
+			fw.close();
+				
 		} catch (ObjectAlreadyInitializedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
