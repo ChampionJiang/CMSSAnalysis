@@ -50,14 +50,21 @@ public class UploadServlet extends HttpServlet {
 			PrintWriter out = resp.getWriter();
 			out.println(table.toJSON());
 			
-			FileWriter fw = new FileWriter("E:\\test.json");
-			BufferedWriter bw = new BufferedWriter(fw);
 			
-			bw.write(table.toJSON());
+			String saveurl = req.getSession().getServletContext().getRealPath("/")+ "app\\asset\\test\\test.json";
 			
-			bw.flush();
-			bw.close();
-			fw.close();
+			FileOutputStream writerStream = new java.io.FileOutputStream(saveurl);    
+			
+			BufferedWriter writer = new java.io.BufferedWriter(new java.io.OutputStreamWriter(writerStream, "UTF-8"));  
+			
+			
+			
+			writer.write(table.toJSON());
+			
+			System.out.println(saveurl);
+			writer.flush();
+			writer.close();
+			writerStream.close();
 				
 		} catch (ObjectAlreadyInitializedException e) {
 			// TODO Auto-generated catch block
