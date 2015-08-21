@@ -2,6 +2,8 @@ package com.Import;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -86,49 +89,7 @@ public class ExcelImport implements Connector {
 	public int getNumOfRows()
 	{
 		return this.m_currentsheet.getPhysicalNumberOfRows();
-	}
-	
-	public LinkedList<String> getRow(int r)
-	{
-		LinkedList<String> res = new LinkedList<String>();
-		XSSFRow row = m_currentsheet.getRow(r);  
-		
-		//int first = row.getFirstCellNum();
-		int last = row.getLastCellNum();
-		
-		String cellNovalue="";
-		for (int i = 0; i < last; i++)
-		{
-			XSSFCell cell = row.getCell(i);
-//			try {
-//				cellNovalue = cell.getRawValue();
-//			} catch (Exception e)
-//			{
-//				cellNovalue = "";
-//			}
-			try {  
-	               cellNovalue = cell.getStringCellValue();  
-	           } catch (IllegalStateException e) {  
-	                try {  
-	                    double dcellNovalue = cell.getNumericCellValue();  
-	   
-	                    cellNovalue = String.valueOf(dcellNovalue);  
-	                } catch (IllegalStateException e2) {  
-	                    cellNovalue = "";  
-	                    //e.printStackTrace();  
-	                }  
-	            } catch (Exception e3) {  
-	                cellNovalue = "";  
-	                //e3.printStackTrace();  
-	            }  
-
-	           res.add(cellNovalue);				
-		}
-		
-			
-		return res;
-	}
-	
+	}	
 	
 	private static void ReadAndPrintExcelFile(String filePath, String sSheetName) {  
         try {  
@@ -228,8 +189,17 @@ public class ExcelImport implements Connector {
 						break;
 					case HSSFCell.CELL_TYPE_NUMERIC:
 						{
-							dVal = cell.getNumericCellValue();
-							col.setData(r-1, dVal);
+							if (HSSFDateUtil.isCellDateFormatted(cell)) {
+								Date date = cell.getDateCellValue();
+								SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+						
+								String str = sdf.format(date);
+							//	System.out.println(str);
+								col.setData(r-1, str);
+							} else {
+								dVal = cell.getNumericCellValue();
+								col.setData(r-1, dVal);
+							}
 						}
 						break;
 					default:

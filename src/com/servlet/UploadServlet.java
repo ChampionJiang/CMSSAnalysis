@@ -51,7 +51,7 @@ public class UploadServlet extends HttpServlet {
 			out.println(table.toJSON());
 			
 			
-			String saveurl = req.getSession().getServletContext().getRealPath("/")+ "app\\asset\\test\\test.json";
+			String saveurl = req.getSession().getServletContext().getRealPath("/")+ "app/asset/test/test.json";
 			
 			FileOutputStream writerStream = new java.io.FileOutputStream(saveurl);    
 			
