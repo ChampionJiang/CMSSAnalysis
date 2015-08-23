@@ -58,7 +58,7 @@ public class SmartUpload {
 		m_application = servletconfig.getServletContext();
 	}
 
-	public void service(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
+	public void init(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse)
 			throws ServletException, IOException {
 		m_request = httpservletrequest;
 		m_response = httpservletresponse;

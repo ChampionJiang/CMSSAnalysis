@@ -8,13 +8,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
@@ -24,71 +17,46 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.connector.Connector;
-import com.db.DbDao;
 import com.jsp.smart.File;
-import com.jsp.smart.SmartUpload;
 import com.storage.Column;
 import com.storage.SimpleColumn;
 import com.storage.MyTable;
 import com.storage.ObjectAlreadyInitializedException;
 
 public class ExcelImport implements Connector {
-	protected byte m_binArray[];
-	protected XSSFWorkbook m_workbook;
-	XSSFSheet m_currentsheet;
-	protected SmartUpload m_su;
+	//protected byte m_binArray[];
+	protected XSSFWorkbook workbook;
+	XSSFSheet currentsheet;
 	protected String sheetName;
-	DbDao dbdao;
+	File file;
+	//DbDao dbdao;
 	
-	public final void initialize(PageContext pagecontext) throws ServletException {
-		
-		m_su = new SmartUpload();
-		
-		m_su.initialize(pagecontext);
-		
+	public ExcelImport(File file) throws IOException {
+		this.file = file;
+			
 		init();
 	}
-	
-	public final void initialize(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+		
+	private void init() throws IOException
 	{
-		m_su = new SmartUpload();
-		
-		m_su.service(request, response);
-		
-		init();
-	}
-	
-	private void init()
-	{
-		try {
-			m_su.setAllowedFilesList("xls,xlsx");
-			m_su.upload();
-
-			File file = m_su.getFiles().getFile(0);
-
-			m_workbook = new XSSFWorkbook(file.getInputStream());
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		this.setCurrentSheet(0);
+		workbook = new XSSFWorkbook(file.getInputStream());
+		setCurrentSheet(0);
 	}
 	
 	public int getNumOfSheets()
 	{
-		return m_workbook.getNumberOfSheets();
+		return workbook.getNumberOfSheets();
 	}
 	
 	public void setCurrentSheet(int sheet)
 	{
-		m_currentsheet = m_workbook.getSheetAt(sheet);
-		sheetName = m_su.getFiles().getFile(0).getFileName() + m_currentsheet.getSheetName();
+		currentsheet = workbook.getSheetAt(sheet);
+		sheetName = file.getFileName() + currentsheet.getSheetName();
 	}
 	
 	public int getNumOfRows()
 	{
-		return this.m_currentsheet.getPhysicalNumberOfRows();
+		return currentsheet.getPhysicalNumberOfRows();
 	}	
 	
 	private static void ReadAndPrintExcelFile(String filePath, String sSheetName) {  
@@ -149,7 +117,7 @@ public class ExcelImport implements Connector {
 			return table;
 		
 		// assume the first row defines the header, i.e. the names of each column
-		XSSFRow row = m_currentsheet.getRow(0);
+		XSSFRow row = currentsheet.getRow(0);
 		int cols = row.getLastCellNum();
 		
 		SimpleColumn.DataType dt[] = new SimpleColumn.DataType[cols];
@@ -166,7 +134,7 @@ public class ExcelImport implements Connector {
 		
 		for (int r = 1; r < rows; r++)
 		{
-			row = m_currentsheet.getRow(r);
+			row = currentsheet.getRow(r);
 			
 			for (int c = 0; c < cols; c++)
 			{
