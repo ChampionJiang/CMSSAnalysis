@@ -38,4 +38,6 @@ public abstract class Column {
 	}
 	
 	public abstract String getDataAsString(int r);
+	
+	public abstract Object getData(int r);
 }

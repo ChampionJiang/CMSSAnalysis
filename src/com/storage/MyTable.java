@@ -105,7 +105,7 @@ public class MyTable implements Serializable {
 			for (int c = 0; c < columns.size(); c++) {
 				Column col = columns.get(c);
 				
-				row.put(col.getName(), col.getDataAsString(r));
+				row.put(col.getName(), col.getData(r));
 				
 			}
 			table.put(row);

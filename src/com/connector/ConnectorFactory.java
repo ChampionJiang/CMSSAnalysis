@@ -19,7 +19,7 @@ public class ConnectorFactory {
 	{
 		SmartUpload su = new SmartUpload();
 		su.init(req, resp);
-		su.setAllowedFilesList("xls,xlsx,csv");
+		su.setAllowedFilesList("xls,xlsx,csv,txt");
 		su.upload();
 		
 		// do we support upload multiple files at the same time?
@@ -31,7 +31,7 @@ public class ConnectorFactory {
 		if (fileExt.equals("xls") || fileExt.equals("xlsx")) {
 			type = ConnectorType.EXCEL;
 		}
-		else if (fileExt.equals("csv")){
+		else if (fileExt.equals("csv") || fileExt.equals("txt")){
 			type = ConnectorType.CSV;
 		}
 		

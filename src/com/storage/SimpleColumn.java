@@ -83,4 +83,10 @@ public class SimpleColumn extends Column implements Serializable{
 		// TODO Auto-generated method stub
 		return data[r] == null ? null : data[r].toString();
 	}
+
+	@Override
+	public Object getData(int r) {
+		// TODO Auto-generated method stub
+		return data[r];
+	}
 }
