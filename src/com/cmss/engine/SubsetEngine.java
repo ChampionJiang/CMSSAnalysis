@@ -1,15 +1,14 @@
 package com.cmss.engine;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.cmss.Import.CSVImport;
+import com.cmss.Import.ExcelImport;
 import com.cmss.aggregation.Aggregator;
 import com.cmss.storage.Column;
 import com.cmss.storage.MyTable;
@@ -89,13 +88,13 @@ public class SubsetEngine {
 		return result;
 	}
 	
-	public static void main(String[] args) throws FileNotFoundException, ObjectAlreadyInitializedException {
-		CSVImport csvimport = new CSVImport("test.csv");
+	public static void main(String[] args) throws ObjectAlreadyInitializedException, IOException {
+		ExcelImport excelimport = new ExcelImport("test.xlsx");
 		
-		MyTable t1 = csvimport.Transform();
+		MyTable t1 = excelimport.Transform();
 		SubsetEngine se = new SubsetEngine();
-		int attrs[] = {2};
-		int metrics[] = {3};
+		int attrs[] = {0,1};
+		int metrics[] = {4};
 		MyTable t2 = se.subset(t1, attrs, metrics);
 		
 		System.out.println("Start");

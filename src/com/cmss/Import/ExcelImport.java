@@ -2,10 +2,10 @@ package com.cmss.Import;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -28,18 +28,26 @@ public class ExcelImport implements Connector {
 	protected XSSFWorkbook workbook;
 	XSSFSheet currentsheet;
 	protected String sheetName;
-	File file;
+	//File file;
+	String fileName;
+	InputStream inputStream;
 	//DbDao dbdao;
 	
 	public ExcelImport(File file) throws IOException {
-		this.file = file;
-			
+		fileName = file.getFileName();
+		inputStream = file.getInputStream();
 		init();
 	}
 		
+	public ExcelImport(String fileName) throws IOException {
+		this.fileName = fileName;
+		inputStream = new FileInputStream(fileName);
+		
+		init();
+	}
 	private void init() throws IOException
 	{
-		workbook = new XSSFWorkbook(file.getInputStream());
+		workbook = new XSSFWorkbook(inputStream);
 		setCurrentSheet(0);
 	}
 	
@@ -51,7 +59,7 @@ public class ExcelImport implements Connector {
 	public void setCurrentSheet(int sheet)
 	{
 		currentsheet = workbook.getSheetAt(sheet);
-		sheetName = file.getFileName() + currentsheet.getSheetName();
+		sheetName = fileName + currentsheet.getSheetName();
 	}
 	
 	public int getNumOfRows()
