@@ -1,1 +1,5 @@
-Category,Year,ProfitMusic,2005,100Music,2006,200Movie,2003,111
+Category,Year,Country,Profit
+Music,2005,US,100
+Music,2006,CHN,200
+Movie,2003,US,111
+Movie,2003,US,123

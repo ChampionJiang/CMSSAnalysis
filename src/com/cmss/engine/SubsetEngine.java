@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.cmss.Import.CSVImport;
 import com.cmss.aggregation.Aggregator;
@@ -68,7 +69,7 @@ public class SubsetEngine {
 			cols.add(iTable.getColumn(attr));
 		}
 		
-		Map<Tuple, List<Integer>> result = new HashMap<Tuple, List<Integer>>();
+		Map<Tuple, List<Integer>> result = new TreeMap<Tuple, List<Integer>>();
 		for (int i = 0; i < row; i++) {
 			Tuple tuple = new Tuple(cols.size());
 			for (int j = 0; j < cols.size(); j++) {
@@ -93,8 +94,8 @@ public class SubsetEngine {
 		
 		MyTable t1 = csvimport.Transform();
 		SubsetEngine se = new SubsetEngine();
-		int attrs[] = {0};
-		int metrics[] = {2};
+		int attrs[] = {2};
+		int metrics[] = {3};
 		MyTable t2 = se.subset(t1, attrs, metrics);
 		
 		System.out.println("Start");

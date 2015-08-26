@@ -47,8 +47,8 @@ public class UploadServlet extends HttpServlet {
 			resp.setCharacterEncoding("utf-8");
 			resp.setContentType("application/json;charset=utf-8");
 			resp.setHeader("Cache-Control", "no-cache");
-			PrintWriter out = resp.getWriter();
-			out.println(table.toJSON());
+//			PrintWriter out = resp.getWriter();
+//			out.println(table.toJSON());
 
 			String saveurl = req.getSession().getServletContext().getRealPath("/") + "app/asset/test/test.json";
 

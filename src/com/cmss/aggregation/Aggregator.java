@@ -15,6 +15,23 @@ public class Aggregator {
 	}
 	
 	public Object aggregate(Column col, List<Integer> group, Aggregator.Operator operator) {
+		switch (operator){
+		case SUM: {
+			double dVal = 0;
+			for (int r: group) {
+				Object val = col.getData(r);
+				if (val instanceof Integer)
+					dVal += (int) val;
+				else if (val instanceof Double)
+					dVal += (double) val;
+			}
+			return dVal;
+		}
+			//break;
+		default:
+			break;
+		}
+		
 		return null;
 	}
 }

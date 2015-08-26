@@ -1,6 +1,6 @@
 package com.cmss.storage;
 
-public class Tuple {
+public class Tuple implements Comparable{
 
 	Object [] data;
 	public Tuple(int size) {
@@ -31,4 +31,28 @@ public class Tuple {
 		
 		return true;
 	}  
+	
+	public int hashCode()
+	{
+		return data.hashCode();
+	}
+
+	@Override
+	public int compareTo(Object obj) {
+
+		if (!(obj instanceof Tuple))
+		{
+			return -1;
+		}
+		
+		Tuple tuple = (Tuple) obj;
+		
+		int cmp = 0;
+		for (int i = 0; i < data.length; i++) {
+			if ((cmp = data[i].toString().compareTo(tuple.getKey(i).toString())) != 0)
+				break;
+		}
+		
+		return cmp;
+	}
 }
