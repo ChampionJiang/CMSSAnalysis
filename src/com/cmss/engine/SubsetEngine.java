@@ -13,11 +13,12 @@ import com.cmss.aggregation.Aggregator;
 import com.cmss.storage.Column;
 import com.cmss.storage.MyTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
+import com.cmss.storage.Tuple;
 
 public class SubsetEngine {
 	public MyTable subset(MyTable iTable, int[] attrs, int[] metrics){
-		Map<Object[], List<Integer>> grouping = groupColumns(iTable, attrs);
-		Iterator<Object[]> iterator = grouping.keySet().iterator();
+		Map<Tuple, List<Integer>> grouping = groupColumns(iTable, attrs);
+		Iterator<Tuple> iterator = grouping.keySet().iterator();
 		
 		MyTable result = new MyTable();
 		int resultRow = grouping.size();
@@ -37,13 +38,13 @@ public class SubsetEngine {
 		
 		int iRow = 0;
 		while (iterator.hasNext()) {
-			Object[] key = iterator.next();
+			Tuple tuple = iterator.next();
 			
 			for (int c = 0; c < attrs.length; c++) {
-				result.getColumn(c).setData(iRow, key[c]);
+				result.getColumn(c).setData(iRow, tuple.getKey(c));
 			}
 			
-			List<Integer> group = grouping.get(key);
+			List<Integer> group = grouping.get(tuple);
 			
 			Aggregator aggregator = new Aggregator();
 			for (int m = 0; m < metrics.length; m++) {
@@ -58,7 +59,7 @@ public class SubsetEngine {
 		return result;
 	}
 	
-	private Map<Object[], List<Integer>> groupColumns(MyTable iTable, int[] attrs) {
+	private Map<Tuple, List<Integer>> groupColumns(MyTable iTable, int[] attrs) {
 		
 		int row = iTable.getNumOfRows();
 		
@@ -67,11 +68,11 @@ public class SubsetEngine {
 			cols.add(iTable.getColumn(attr));
 		}
 		
-		Map<Object[], List<Integer>> result = new HashMap<Object[], List<Integer>>();
+		Map<Tuple, List<Integer>> result = new HashMap<Tuple, List<Integer>>();
 		for (int i = 0; i < row; i++) {
-			Object[] tuple = new Object[cols.size()];
+			Tuple tuple = new Tuple(cols.size());
 			for (int j = 0; j < cols.size(); j++) {
-				tuple[j] = cols.get(j).getData(i);
+				tuple.setKey(j, cols.get(j).getData(i));
 			}
 			
 			List<Integer> group = result.get(tuple);
