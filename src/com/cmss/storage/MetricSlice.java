@@ -1,6 +1,6 @@
 package com.cmss.storage;
 
-public class MetricSlice {
+public class MetricSlice extends CubeSlice {
 	private UnitAssociation keyTable;
 	private Column column;
 

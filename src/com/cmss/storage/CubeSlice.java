@@ -1,5 +1,5 @@
 package com.cmss.storage;
 
-public class Attribute {
-	
+public class CubeSlice {
+
 }
