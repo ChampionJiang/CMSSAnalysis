@@ -1,5 +1,7 @@
 package com.cmss.storage;
 
-public class TabularData {
+import java.util.ArrayList;
 
+public class TabularData {
+	private ArrayList<DataUnit> units;
 }

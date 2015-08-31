@@ -1,20 +1,20 @@
 package com.cmss.object;
 
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 
 public class ReportInstance {
-	private MyTable table;
+	private RawTable table;
 
-	public MyTable getTable() {
+	public RawTable getTable() {
 		
 		if (table == null)
 		{
-			table = new MyTable();
+			table = new RawTable();
 		}
 		return table;
 	}
 
-	public void setTable(MyTable table) {
+	public void setTable(RawTable table) {
 		this.table = table;
 	}
 }

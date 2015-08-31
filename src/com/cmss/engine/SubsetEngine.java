@@ -11,16 +11,17 @@ import java.util.TreeMap;
 import com.cmss.Import.ExcelImport;
 import com.cmss.aggregation.Aggregator;
 import com.cmss.storage.Column;
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 import com.cmss.storage.Tuple;
+import com.sun.media.jfxmedia.logging.Logger;
 
 public class SubsetEngine {
-	public MyTable subset(MyTable iTable, int[] attrs, int[] metrics){
+	public RawTable subset(RawTable iTable, int[] attrs, int[] metrics){
 		Map<Tuple, List<Integer>> grouping = groupColumns(iTable, attrs);
 		Iterator<Tuple> iterator = grouping.keySet().iterator();
 		
-		MyTable result = new MyTable();
+		RawTable result = new RawTable();
 		int resultRow = grouping.size();
 		try {
 			result.init(resultRow);
@@ -59,7 +60,7 @@ public class SubsetEngine {
 		return result;
 	}
 	
-	private Map<Tuple, List<Integer>> groupColumns(MyTable iTable, int[] attrs) {
+	private Map<Tuple, List<Integer>> groupColumns(RawTable iTable, int[] attrs) {
 		
 		int row = iTable.getNumOfRows();
 		
@@ -91,11 +92,11 @@ public class SubsetEngine {
 	public static void main(String[] args) throws ObjectAlreadyInitializedException, IOException {
 		ExcelImport excelimport = new ExcelImport("test.xlsx");
 		
-		MyTable t1 = excelimport.Transform();
+		RawTable t1 = excelimport.Transform();
 		SubsetEngine se = new SubsetEngine();
 		int attrs[] = {0,1};
 		int metrics[] = {4};
-		MyTable t2 = se.subset(t1, attrs, metrics);
+		RawTable t2 = se.subset(t1, attrs, metrics);
 		
 		System.out.println("Start");
 		System.out.println(t1.toJSON());

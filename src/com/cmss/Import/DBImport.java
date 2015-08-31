@@ -3,14 +3,14 @@ package com.cmss.Import;
 import java.util.List;
 
 import com.cmss.connector.Connector;
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 
 public class DBImport implements Connector{
 
 	
 	
 	@Override
-	public MyTable Transform() {
+	public RawTable Transform() {
 		// TODO Auto-generated method stub
 		return null;
 	}

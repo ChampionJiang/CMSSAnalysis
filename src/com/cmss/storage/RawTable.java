@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 import com.cmss.engine.SubsetEngine;
 
-public class MyTable implements Serializable {
+public class RawTable implements Serializable {
 	/**
 	 * 
 	 */
@@ -22,7 +22,7 @@ public class MyTable implements Serializable {
 	
 	private int rowCount;
 	
-	public MyTable(int r)
+	public RawTable(int r)
 	{
 		initialized = false;
 		try {
@@ -33,7 +33,7 @@ public class MyTable implements Serializable {
 		}
 	}
 	
-	public MyTable()
+	public RawTable()
 	{
 		initialized = false;
 		rowCount = -1;
@@ -128,7 +128,7 @@ public class MyTable implements Serializable {
 //		
 //		System.out.println(o[0].toString()+ "  " + o[1].toString());
 //		return;
-		MyTable mt = new MyTable(10);
+		RawTable mt = new RawTable(10);
 		
 		Random rdm = new Random();
 		SimpleColumn.DataType dt[] = {SimpleColumn.DataType.STRING, SimpleColumn.DataType.DOUBLE, SimpleColumn.DataType.INTEGER};
@@ -149,7 +149,7 @@ public class MyTable implements Serializable {
 		int attrs[] = {0,1};
 		int metrics[] = {2};
 		
-		MyTable result = se.subset(mt, attrs, metrics);
+		RawTable result = se.subset(mt, attrs, metrics);
 		
 		System.out.println(mt.toJSON());
 		System.out.println(result.toJSON());

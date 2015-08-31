@@ -3,11 +3,11 @@ package com.cmss.query;
 import java.util.LinkedList;
 
 import com.cmss.object.ReportInstance;
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 
 public class Populator {
-	private MyTable table;
+	private RawTable table;
 
 	public Populator(ReportInstance ri)
 	{

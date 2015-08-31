@@ -18,7 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.cmss.connector.Connector;
 import com.cmss.storage.Column;
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 import com.cmss.storage.SimpleColumn;
 import com.jsp.smart.File;
@@ -115,10 +115,10 @@ public class ExcelImport implements Connector {
 	}
 
 	@Override
-	public MyTable Transform() throws ObjectAlreadyInitializedException {
+	public RawTable Transform() throws ObjectAlreadyInitializedException {
 		// TODO Auto-generated method stub
 		int rows = this.getNumOfRows();
-		MyTable table = new MyTable();
+		RawTable table = new RawTable();
 		table.init(rows-1);
 		
 		if (rows <= 1)
@@ -194,7 +194,7 @@ public class ExcelImport implements Connector {
 		return table;
 	}
 
-	private void flushToDB(MyTable table)
+	private void flushToDB(RawTable table)
 	{
 		//dbdao.modify(sql, args);
 	}

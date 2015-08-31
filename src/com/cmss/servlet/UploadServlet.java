@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cmss.connector.Connector;
 import com.cmss.connector.ConnectorFactory;
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 import com.jsp.smart.SmartUploadException;
 
@@ -30,7 +30,7 @@ public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//private ExcelImport mEI;
 	
-	private static List<MyTable> tables = new LinkedList<MyTable>();
+	private static List<RawTable> tables = new LinkedList<RawTable>();
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -41,7 +41,7 @@ public class UploadServlet extends HttpServlet {
 		try {
 			Connector connector = ConnectorFactory.createConnectorFromRequest(req, resp);
 
-			MyTable table = connector.Transform();
+			RawTable table = connector.Transform();
 			tables.add(table);
 			// System.out.println(table.toJSON());
 			resp.setCharacterEncoding("utf-8");

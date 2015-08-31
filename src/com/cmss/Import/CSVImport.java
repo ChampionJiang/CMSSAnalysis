@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.cmss.connector.Connector;
 import com.cmss.storage.Column;
-import com.cmss.storage.MyTable;
+import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 import com.cmss.storage.SimpleColumn.DataType;
 import com.jsp.smart.File;
@@ -44,9 +44,9 @@ public class CSVImport implements Connector {
 	}
 
 	@Override
-	public MyTable Transform() throws ObjectAlreadyInitializedException {
+	public RawTable Transform() throws ObjectAlreadyInitializedException {
 		// TODO Auto-generated method stub
-		MyTable table = new MyTable();
+		RawTable table = new RawTable();
 		try {
 			// it's inefficient to read all data before we can compose the table
 			// to do: to use composite table
@@ -103,7 +103,7 @@ public class CSVImport implements Connector {
 	public static void main(String[] args) {
 		try {
 			CSVImport csvimpt = new CSVImport("test.csv");
-			MyTable table = csvimpt.Transform();
+			RawTable table = csvimpt.Transform();
 			System.out.println(table.toJSON());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
