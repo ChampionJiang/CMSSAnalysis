@@ -8,9 +8,14 @@
 </head>
 <body>
 Please select the picture to upload
-<form id="upload" method="post" action="upload" method="post" enctype="multipart/form-data" name="form1">
+<form id="upload" method="post" action="upload" enctype="multipart/form-data" name="form1">
 <input type="file" name="file"/><br/>
 <input type="submit" name="Import" value="upload"/>
 </form>
+
+<form id="subset" method="post" action="upload" name="form1">
+<input type="submit" name="aggregate" value="aggregate"/>
+</form>
+
 </body>
 </html>

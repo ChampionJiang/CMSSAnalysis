@@ -5,8 +5,10 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cmss.connector.Connector;
 import com.cmss.connector.ConnectorFactory;
+import com.cmss.engine.SubsetEngine;
 import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 import com.jsp.smart.SmartUploadException;
@@ -30,7 +33,7 @@ public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//private ExcelImport mEI;
 	
-	private static List<RawTable> tables = new LinkedList<RawTable>();
+	private static Map<String, RawTable> tables = new HashMap<String, RawTable>();
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -39,18 +42,45 @@ public class UploadServlet extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
 		try {
-			Connector connector = ConnectorFactory.createConnectorFromRequest(req, resp);
+			String sessionID = req.getRequestedSessionId();
+			
+			RawTable table = null;
+			if (tables.containsKey(sessionID)) {
+				table = tables.get(sessionID);
+			}
+			
+			RawTable table2 = null;
+			String filename = "";
+			if (table == null) {
+				
+				Connector connector = ConnectorFactory.createConnectorFromRequest(req, resp);
 
-			RawTable table = connector.Transform();
-			tables.add(table);
+				table = connector.Transform();
+				tables.put(sessionID, table);
+				filename = "test.json";
+			} else {
+				SubsetEngine se = new SubsetEngine();
+				int []attrs = {1};
+				int []metrics = {3,4};
+				table2 = se.subset(table, attrs, metrics);
+				filename = "test_agg.json";
+			}
+			
+			
 			// System.out.println(table.toJSON());
 			resp.setCharacterEncoding("utf-8");
 			resp.setContentType("application/json;charset=utf-8");
 			resp.setHeader("Cache-Control", "no-cache");
-//			PrintWriter out = resp.getWriter();
-//			out.println(table.toJSON());
+			PrintWriter out = resp.getWriter();
+			out.println(table.toJSON());
 
-			String saveurl = req.getSession().getServletContext().getRealPath("/") + "app/asset/test/test.json";
+			if (table2 != null) {
+				out.println("----------------------------");
+
+				out.println(table2.toJSON());
+			}
+			
+			String saveurl = req.getSession().getServletContext().getRealPath("/") + "app/asset/test/"+filename;
 
 			FileOutputStream writerStream = new java.io.FileOutputStream(saveurl);
 

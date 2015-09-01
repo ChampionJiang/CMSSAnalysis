@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-Connector connector = ConnectorFactory.createConnectorFromRequest((HttpServletRequest)pageContext.getRequest(), (HttpServletResponse)pageContext.getResponse());
+//Connector connector = ConnectorFactory.createConnectorFromRequest((HttpServletRequest)pageContext.getRequest(), (HttpServletResponse)pageContext.getResponse());
 
 %>
 <head>
@@ -14,12 +14,8 @@ Connector connector = ConnectorFactory.createConnectorFromRequest((HttpServletRe
 <body>
 
 <%
-
-RawTable table = connector.Transform();%>
-<%=table.toJSON()
 	
 %>
-
 
 </body>
 </html>

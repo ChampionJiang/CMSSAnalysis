@@ -1,16 +1,16 @@
 package com.cmss.storage;
 
 public class MetricSlice extends CubeSlice {
-	private UnitAssociation keyTable;
+	private TabIndex index;
 	private Column column;
 
-	public UnitAssociation getKeyTable() {
-		return keyTable;
+	public TabIndex getKeyTable() {
+		return index;
 	}
 
 
-	public void setKeyTable(UnitAssociation keyTable) {
-		this.keyTable = keyTable;
+	public void setKeyTable(TabIndex index) {
+		this.index = index;
 	}
 
 

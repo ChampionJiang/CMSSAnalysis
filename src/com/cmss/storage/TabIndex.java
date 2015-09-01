@@ -1,13 +1,13 @@
 package com.cmss.storage;
 
-public class UnitAssociation {
+public class TabIndex {
 	
 	private int[] keyTable;
 	private int nUnit;
 	private int[] units;
 	private int row;
 
-	public UnitAssociation(int[] units, int row, int[] keyTable) {
+	public TabIndex(int[] units, int row, int[] keyTable) {
 		nUnit = units.length;
 		this.units = units;
 		this.keyTable = keyTable;
