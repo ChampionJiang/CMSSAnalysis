@@ -15,7 +15,7 @@ Connector connector = ConnectorFactory.createConnectorFromRequest((HttpServletRe
 
 <%
 
-MyTable table = connector.Transform();%>
+RawTable table = connector.Transform();%>
 <%=table.toJSON()
 	
 %>
