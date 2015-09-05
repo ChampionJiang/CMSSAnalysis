@@ -15,8 +15,10 @@ Connector connector = ConnectorFactory.createConnectorFromRequest((HttpServletRe
 
 <%
 
-RawTable table = connector.Transform();%>
-<%=table.toJSON()
+String s = (String)request.getAttribute("fff");
+
+//RawTable table = connector.Transform();%>
+<%=s
 	
 %>
 

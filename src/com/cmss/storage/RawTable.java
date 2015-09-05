@@ -1,11 +1,17 @@
 package com.cmss.storage;
 
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +27,8 @@ public class RawTable implements Serializable {
 	private boolean initialized;
 	
 	private int rowCount;
+	private UUID uuid;
+	private String name;
 	
 	public RawTable(int r)
 	{
@@ -53,6 +61,10 @@ public class RawTable implements Serializable {
 	
 	public int getNumOfRows() {
 		return this.rowCount;
+	}
+	
+	public int getNumOfColumns() {
+		return this.columns.size();
 	}
 	
 	public void Print()
@@ -120,6 +132,16 @@ public class RawTable implements Serializable {
 		return table.toString();
 	}
 	
+	public List<String> getColumnNames() {
+		ArrayList<String> res = new ArrayList<String>();
+		
+		for (Column c: columns) {
+			res.add(c.getName());
+		}
+		
+		return res;
+	}
+	
 	public static void main(String args[]) throws IOException{
 		
 //		Object o[] = new Object[4];
@@ -146,22 +168,47 @@ public class RawTable implements Serializable {
 		
 		SubsetEngine se = new SubsetEngine();
 		
-		int attrs[] = {0,1};
-		int metrics[] = {2};
+		Integer attrs[] = {0,1};
+		Integer metrics[] = {2};
 		
-		RawTable result = se.subset(mt, attrs, metrics);
+//		RawTable result = se.subset(mt, attrs, metrics);
+//		
+//		System.out.println(mt.toJSON());
+//		System.out.println(result.toJSON());
+		FileInputStream fis = new FileInputStream("table");
+		ObjectInputStream ois = new ObjectInputStream(fis);
 		
 		System.out.println(mt.toJSON());
-		System.out.println(result.toJSON());
-		
-//		FileWriter fw = new FileWriter("WebContent\\app\\asset\\test\\test.json");
-//		BufferedWriter bw = new BufferedWriter(fw);
+		try {
+			RawTable rt = (RawTable)ois.readObject();
+			System.out.println(rt.toString());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		FileOutputStream fos = new FileOutputStream("table");
+//		ObjectOutputStream oos = new ObjectOutputStream(fos);
 //		
-//		bw.write(mt.toJSON());
+//		oos.writeObject(mt);
 //		
-//		bw.flush();
-//		bw.close();
-//		fw.close();
-		
+//		oos.flush();
+//		oos.close();
+		System.out.println("finished");
+	}
+
+	public UUID getUUID() {
+		return uuid;
+	}
+
+	public void setUUID(UUID uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

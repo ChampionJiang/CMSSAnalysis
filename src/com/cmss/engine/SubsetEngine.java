@@ -17,7 +17,8 @@ import com.cmss.storage.Tuple;
 import com.sun.media.jfxmedia.logging.Logger;
 
 public class SubsetEngine {
-	public RawTable subset(RawTable iTable, int[] attrs, int[] metrics){
+	public RawTable subset(RawTable iTable, Integer[] attrs, Integer[] metrics){
+		
 		Map<Tuple, List<Integer>> grouping = groupColumns(iTable, attrs);
 		Iterator<Tuple> iterator = grouping.keySet().iterator();
 		
@@ -60,7 +61,7 @@ public class SubsetEngine {
 		return result;
 	}
 	
-	private Map<Tuple, List<Integer>> groupColumns(RawTable iTable, int[] attrs) {
+	private Map<Tuple, List<Integer>> groupColumns(RawTable iTable, Integer[] attrs) {
 		
 		int row = iTable.getNumOfRows();
 		
@@ -94,8 +95,8 @@ public class SubsetEngine {
 		
 		RawTable t1 = excelimport.Transform();
 		SubsetEngine se = new SubsetEngine();
-		int attrs[] = {0,1};
-		int metrics[] = {4};
+		Integer attrs[] = {0,1};
+		Integer metrics[] = {4};
 		RawTable t2 = se.subset(t1, attrs, metrics);
 		
 		System.out.println("Start");

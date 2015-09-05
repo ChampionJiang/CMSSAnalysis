@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
@@ -121,6 +122,10 @@ public class ExcelImport implements Connector {
 		RawTable table = new RawTable();
 		table.init(rows-1);
 		
+		table.setName(this.fileName);
+		UUID uuid = UUID.randomUUID();
+		table.setUUID(uuid);
+		
 		if (rows <= 1)
 			return table;
 		
@@ -176,6 +181,13 @@ public class ExcelImport implements Connector {
 								dVal = cell.getNumericCellValue();
 								col.setData(r-1, dVal);
 							}
+						}
+						break;
+					case HSSFCell.CELL_TYPE_FORMULA:
+						{
+							cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
+							dVal = cell.getNumericCellValue();
+							col.setData(r-1, dVal);
 						}
 						break;
 					default:

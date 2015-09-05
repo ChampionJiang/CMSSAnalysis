@@ -1,21 +1,94 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ page import="java.util.UUID, java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-Please select the picture to upload
+Please select the file to upload
 <form id="upload" method="post" action="upload" enctype="multipart/form-data" name="form1">
 <input type="file" name="file"/><br/>
 <input type="submit" name="Import" value="upload"/>
+
 </form>
 
-<form id="subset" method="post" action="upload" name="form1">
+
+<form id="save" action="serialize" name="form2">
+<input type="text" name="saveAs">
+<input type="submit" name="Save" value="Save"/>
+</form>
+
+<form id="cac" action="deserialize" name="form3">
+
+
+<input type="submit" name="Check Available Caches" value="Load"/>
+
+</form>
+
+<form id="load" action="deserialize" name = "form4">
+<%
+List<String> fileNames = (List<String>) request.getAttribute("files");%>
+existing files:<br/>
+<% 
+	if (fileNames != null) {
+		for (int i = 0; i < fileNames.size(); i++) {
+		%>
+		<input type = "radio" name="fls" id=<%="file"+i %> value=<%=i %>/><%=fileNames.get(i) %><br/>
+<%		}
+	}
+%>
+<input type="submit" name="load" value="load"/>
+</form>
+
+<form id="subset" method="post" action="manipulate" name="form5">
+<%
+
+List<String> columnNames = (List<String>) request.getAttribute("cns");
+if (columnNames != null) {
+	%>
+	Columns:<br/>
+	<%for (int i = 0; i < columnNames.size(); i++) { 
+		String s = columnNames.get(i);%>
+	<select id = <%="sel"+i %> name = <%="sel"+i %>>
+	<option value = "U"></option>
+	<option value="A">Attribute</option>
+	<option value="M">Metric</option>
+	</select><%=s %><br/>	
+	<%}
+	
+	session.setAttribute("cc", columnNames.size());
+}
+
+UUID uuid = (UUID)request.getAttribute("uuid");
+if (uuid != null) {
+	out.println("table id: " + uuid.toString()+"<br/>");
+	session.setAttribute("uuid", uuid);
+}
+	
+
+String json1 = (String) request.getAttribute("table1");
+if (json1 != null)
+{
+	out.println("original table:<br/>");
+	out.println(json1+"<br/>");
+}
+	
+
+
+String json2 = (String) request.getAttribute("table2");
+if (json2 != null) {
+	out.println("after aggregate:<br/>");
+	out.println(json2+"<br/>");
+}
+
+
+%>
 <input type="submit" name="aggregate" value="aggregate"/>
 </form>
+
 
 </body>
 </html>

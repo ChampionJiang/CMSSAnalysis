@@ -1,6 +1,6 @@
 package com.cmss.storage;
 
-public class Tuple implements Comparable{
+public class Tuple implements Comparable<Object>{
 
 	Object [] data;
 	public Tuple(int size) {

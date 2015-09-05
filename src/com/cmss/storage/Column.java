@@ -1,12 +1,17 @@
 package com.cmss.storage;
 
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.UUID;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class Column {
+public abstract class Column implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	enum ColumnType{
 		ATTRIBUTE,
 		METRIC
@@ -41,4 +46,10 @@ public abstract class Column {
 	public abstract String getDataAsString(int r);
 	
 	public abstract Object getData(int r);
+	public UUID getId() {
+		return id;
+	}
+	public void setId(UUID id) {
+		this.id = id;
+	}
 }
