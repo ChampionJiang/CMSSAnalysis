@@ -54,8 +54,13 @@ public class UploadServlet extends HttpServlet {
 		writer.close();
 		writerStream.close();
 	}
-	
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
+		if (true) {
+			this.jspVersion(req, resp);
+		}
+	}
+	
+	private void jspVersion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
 		try {			
 				HttpSession session = req.getSession();
 				@SuppressWarnings("unchecked")

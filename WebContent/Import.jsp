@@ -24,7 +24,7 @@ Please select the file to upload
 <form id="cac" action="deserialize" name="form3">
 
 
-<input type="submit" name="Check Available Caches" value="Load"/>
+<input type="submit" name="Check Available Caches" value="Check Available Caches"/>
 
 </form>
 
@@ -36,7 +36,7 @@ existing files:<br/>
 	if (fileNames != null) {
 		for (int i = 0; i < fileNames.size(); i++) {
 		%>
-		<input type = "radio" name="fls" id=<%="file"+i %> value=<%=i %>/><%=fileNames.get(i) %><br/>
+		<input type = "radio" name="fls" id=<%="file"+i %> value=<%=fileNames.get(i) %>><%=fileNames.get(i) %><br/>
 <%		}
 	}
 %>

@@ -23,7 +23,7 @@ public class SerializationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private void saveTable(final String root, String name, final RawTable table) throws IOException {
-		String saveurl = root+"caches/"+(name==null ? table.getName():name)+".tbl";
+		String saveurl = root+"caches/"+(name==null ? table.getName():name)+".cache";
 		System.out.println(saveurl);
 		FileOutputStream fos = new FileOutputStream(saveurl);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -34,7 +34,13 @@ public class SerializationServlet extends HttpServlet {
 		oos.close();
 	}
 	
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public void service(HttpServletRequest req, HttpServletResponse resp)  throws IOException {
+		if (true) {
+			this.jspVersion(req, resp);
+		}
+	}
+	
+	private void jspVersion(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		HttpSession session = req.getSession();
 		
 		@SuppressWarnings("unchecked")

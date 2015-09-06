@@ -23,10 +23,9 @@ public class ManipulateServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	private void jspVersion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-				
+		
 		@SuppressWarnings("unchecked")
 		Map<UUID, RawTable> tables = (Map<UUID, RawTable>) session.getAttribute("tables");
 		
@@ -70,6 +69,13 @@ public class ManipulateServlet extends HttpServlet {
 			req.getRequestDispatcher( "Import.jsp").forward(req,resp); 
 		} else {
 			req.setAttribute("table1", "original talbe is not available");
+		}
+	}
+	
+	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		if (true) {
+			this.jspVersion(req, resp);
 		}
 		
 	}

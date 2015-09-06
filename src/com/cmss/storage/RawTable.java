@@ -46,6 +46,8 @@ public class RawTable implements Serializable {
 		initialized = false;
 		rowCount = -1;
 		columns = null;
+		
+		uuid = UUID.randomUUID();
 	}
 	
 	public void init(int r) throws ObjectAlreadyInitializedException
