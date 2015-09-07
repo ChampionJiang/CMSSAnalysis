@@ -14,7 +14,6 @@ import com.cmss.storage.Column;
 import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
 import com.cmss.storage.Tuple;
-import com.sun.media.jfxmedia.logging.Logger;
 
 public class SubsetEngine {
 	public RawTable subset(RawTable iTable, Integer[] attrs, Integer[] metrics){

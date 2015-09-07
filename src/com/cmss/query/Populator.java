@@ -1,6 +1,6 @@
 package com.cmss.query;
 
-import java.util.LinkedList;
+//import java.util.LinkedList;
 
 import com.cmss.object.ReportInstance;
 import com.cmss.storage.RawTable;
@@ -22,7 +22,7 @@ public class Populator {
 		
 		for (int i = 0; i < r; i++)
 		{
-			LinkedList<Object> row = st.getRow(i);
+			//LinkedList<Object> row = st.getRow(i);
 			
 		}
 		} catch (ObjectAlreadyInitializedException e) {
