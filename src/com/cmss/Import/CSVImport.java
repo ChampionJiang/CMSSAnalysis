@@ -10,7 +10,7 @@ import com.cmss.connector.Connector;
 import com.cmss.storage.Column;
 import com.cmss.storage.RawTable;
 import com.cmss.storage.ObjectAlreadyInitializedException;
-import com.cmss.storage.SimpleColumn.DataType;
+import com.cmss.storage.Column.DataType;
 import com.jsp.smart.File;
 import com.opencsv.CSVReader;
 

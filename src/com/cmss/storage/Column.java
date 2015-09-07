@@ -12,6 +12,14 @@ public abstract class Column implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public static enum DataType {
+		INTEGER,
+		DOUBLE,
+		FLOAT,
+		STRING,
+		DATETIME
+	}
+	
 	enum ColumnType{
 		ATTRIBUTE,
 		METRIC

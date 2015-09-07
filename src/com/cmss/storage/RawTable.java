@@ -1,7 +1,9 @@
 package com.cmss.storage;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -141,49 +143,71 @@ public class RawTable implements Serializable {
 	}
 	
 	public static void main(String args[]) throws IOException{
+		String filename = "test1.json";
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
 		
+		StringBuilder sb = new StringBuilder();
+		while (true) {
+			String line = br.readLine();	
+			if (line == null)
+				break;
+			
+			sb.append(line);
+		}
+		
+		String jsonstr = sb.toString();
+		System.out.println(jsonstr);
+		JSONArray jsonobj = new JSONArray(jsonstr);
+		
+		int len = jsonobj.length();
+		for (int i = 0; i < len; i++) {
+			JSONObject obj = jsonobj.getJSONObject(i);
+			System.out.println(obj.get("Date"));
+		}
+		
+		br.close();
 //		Object o[] = new Object[4];
 //		o[0] = "abc";
 //		o[1] = 10;
 //		
 //		System.out.println(o[0].toString()+ "  " + o[1].toString());
 //		return;
-		RawTable mt = new RawTable(10);
-		
-		Random rdm = new Random();
-		SimpleColumn.DataType dt[] = {SimpleColumn.DataType.STRING, SimpleColumn.DataType.DOUBLE, SimpleColumn.DataType.INTEGER};
-		
-		for (int i = 0; i < 3; i++)
-		{
-			Column col = mt.AddColumn(dt[i]);
-			
-			col.setName("col"+i);
-			for(int j = 0; j < 10; j++)
-			{
-				col.setData(j, rdm.nextDouble()*100);
-			}
-		}
-		
-		SubsetEngine se = new SubsetEngine();
-		
-		Integer attrs[] = {0,1};
-		Integer metrics[] = {2};
-		
-//		RawTable result = se.subset(mt, attrs, metrics);
+//		RawTable mt = new RawTable(10);
+//		
+//		Random rdm = new Random();
+//		SimpleColumn.DataType dt[] = {SimpleColumn.DataType.STRING, SimpleColumn.DataType.DOUBLE, SimpleColumn.DataType.INTEGER};
+//		
+//		for (int i = 0; i < 3; i++)
+//		{
+//			Column col = mt.AddColumn(dt[i]);
+//			
+//			col.setName("col"+i);
+//			for(int j = 0; j < 10; j++)
+//			{
+//				col.setData(j, rdm.nextDouble()*100);
+//			}
+//		}
+//		
+//		SubsetEngine se = new SubsetEngine();
+//		
+//		Integer attrs[] = {0,1};
+//		Integer metrics[] = {2};
+//		
+////		RawTable result = se.subset(mt, attrs, metrics);
+////		
+////		System.out.println(mt.toJSON());
+////		System.out.println(result.toJSON());
+//		FileInputStream fis = new FileInputStream("table");
+//		ObjectInputStream ois = new ObjectInputStream(fis);
 //		
 //		System.out.println(mt.toJSON());
-//		System.out.println(result.toJSON());
-		FileInputStream fis = new FileInputStream("table");
-		ObjectInputStream ois = new ObjectInputStream(fis);
-		
-		System.out.println(mt.toJSON());
-		try {
-			RawTable rt = (RawTable)ois.readObject();
-			System.out.println(rt.toString());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			RawTable rt = (RawTable)ois.readObject();
+//			System.out.println(rt.toString());
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 //		FileOutputStream fos = new FileOutputStream("table");
 //		ObjectOutputStream oos = new ObjectOutputStream(fos);
 //		

@@ -123,8 +123,6 @@ public class ExcelImport implements Connector {
 		table.init(rows-1);
 		
 		table.setName(this.fileName);
-		UUID uuid = UUID.randomUUID();
-		table.setUUID(uuid);
 		
 		if (rows <= 1)
 			return table;
@@ -133,7 +131,7 @@ public class ExcelImport implements Connector {
 		XSSFRow row = currentsheet.getRow(0);
 		int cols = row.getLastCellNum();
 		
-		SimpleColumn.DataType dt[] = new SimpleColumn.DataType[cols];
+		Column.DataType dt[] = new Column.DataType[cols];
 		// need a way to figure out the datatypes of each column
 		for (int c = 0; c < cols; c++)
 		{

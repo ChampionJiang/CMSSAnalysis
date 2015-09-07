@@ -18,7 +18,7 @@ public class TabIndex {
 		int start = r*nUnit;
 		
 		for (int i = 0; i < nUnit; i++) {
-			
+			key[units[i]] = keyTable[start++];
 		}
 	}
 	

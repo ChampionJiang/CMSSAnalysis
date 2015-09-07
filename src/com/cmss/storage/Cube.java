@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Cube {
 	private TabularData data;
+	private IndexPool indexPool;
 	private List<CubeSlice> slices;
 
 	public Cube() {
@@ -17,6 +18,7 @@ public class Cube {
 	
 	public void setData(TabularData data) {
 		this.data = data;
+		indexPool = this.data.getIndexPool();
 	}
 
 	public CubeSlice getSlice(int sliceID) {
@@ -28,5 +30,11 @@ public class Cube {
 		
 		slices.add(slice);
 		return sliceID;
+	}
+	
+	public CubeSlice createSlice(int[] units, Column.DataType dt) {
+		CubeSlice slice = new MetricSlice();
+		
+		return slice;
 	}
 }

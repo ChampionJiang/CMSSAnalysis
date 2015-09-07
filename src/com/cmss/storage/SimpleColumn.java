@@ -8,13 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class SimpleColumn extends Column implements Serializable{
-	public static enum DataType {
-		INTEGER,
-		DOUBLE,
-		FLOAT,
-		STRING,
-		DATETIME
-	}
+	
 	/**
 	 * 
 	 */

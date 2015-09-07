@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TabularData {
 	private ArrayList<DataUnit> units;
-	IndexPool keyTablePool;
+	IndexPool indexPool;
 	
 	public DataUnit createUnit(int type) {
 		DataUnit unit = null;
@@ -31,5 +31,10 @@ public class TabularData {
 		cube.setData(this);
 		
 		return cube;
+	}
+
+	public IndexPool getIndexPool() {
+		// TODO Auto-generated method stub
+		return this.indexPool;
 	}
 }
