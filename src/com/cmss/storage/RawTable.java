@@ -4,17 +4,14 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.cmss.engine.SubsetEngine;
 
 public class RawTable implements Serializable {
 	/**
@@ -22,6 +19,7 @@ public class RawTable implements Serializable {
 	 */
 	private static final long serialVersionUID = -4054049728149338294L;
 	private ArrayList<Column> columns;
+	private ArrayList<Column.ColumnType> columnTypes;
 	private boolean initialized;
 	
 	private int rowCount;
@@ -55,6 +53,7 @@ public class RawTable implements Serializable {
 			
 		rowCount = r;
 		columns = new ArrayList<Column>();
+		columnTypes = new ArrayList<Column.ColumnType>();
 		
 		initialized = true;
 	}
@@ -91,6 +90,7 @@ public class RawTable implements Serializable {
 		Column col = ColumnFactory.CreateColumn(dt, rowCount);
 		
 		columns.add(col);
+		columnTypes.add(Column.ColumnType.RESERVED);
 		
 		return col;
 	}
@@ -98,6 +98,10 @@ public class RawTable implements Serializable {
 	public Column getColumn(int idx)
 	{
 		return columns.get(idx);
+	}
+	
+	public void setColumnType(int idx, Column.ColumnType type) {
+		columnTypes.set(idx, type);
 	}
 	
 	@Override
@@ -137,6 +141,28 @@ public class RawTable implements Serializable {
 		
 		for (Column c: columns) {
 			res.add(c.getName());
+		}
+		
+		return res;
+	}
+	
+	public List<String> getAttributes() {
+		ArrayList<String> res = new ArrayList<String>();
+		
+		for (int i = 0; i < columnTypes.size(); i++) {
+			if (columnTypes.get(i) == Column.ColumnType.ATTRIBUTE)
+				res.add(columns.get(i).getName());
+		}
+		
+		return res;
+	}
+	
+	public List<String> getMetrics() {
+		ArrayList<String> res = new ArrayList<String>();
+		
+		for (int i = 0; i < columnTypes.size(); i++) {
+			if (columnTypes.get(i) == Column.ColumnType.METRIC)
+				res.add(columns.get(i).getName());
 		}
 		
 		return res;
@@ -232,5 +258,15 @@ public class RawTable implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int findColumnByName(String str) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < columns.size(); i++) {
+			if (columns.get(i).getName().equals(str)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }

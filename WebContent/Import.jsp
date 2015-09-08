@@ -15,17 +15,30 @@ Please select the file to upload
 
 </form>
 
-
 <form id="save" action="serialize" name="form2">
-<input type="text" name="saveAs">
-<input type="submit" name="Save" value="Save"/>
+<%
+
+List<String> columnNames = (List<String>) request.getAttribute("cns");
+if (columnNames != null) {
+	%>
+	Columns:<br/>
+	<%for (int i = 0; i < columnNames.size(); i++) { 
+		String s = columnNames.get(i);%>
+	<select id = <%="sel"+i %> name = <%="sel"+i %>>
+	<option value="A">Attribute</option>
+	<option value="M">Metric</option>
+	</select><%=s %><br/>	
+	<%}
+	
+	session.setAttribute("cc", columnNames.size());
+}
+%>
+Name:<input type="text" name="saveAs">
+<input type="submit" name="Save" value="publish"/>
 </form>
 
 <form id="cac" action="deserialize" name="form3">
-
-
 <input type="submit" name="Check Available Caches" value="Check Available Caches"/>
-
 </form>
 
 <form id="load" action="deserialize" name = "form4">
@@ -45,21 +58,37 @@ existing files:<br/>
 
 <form id="subset" method="post" action="manipulate" name="form5">
 <%
+List<String> attrs = (List<String>)request.getAttribute("attrs");
+List<String> metrics = (List<String>)request.getAttribute("metrics");
 
-List<String> columnNames = (List<String>) request.getAttribute("cns");
-if (columnNames != null) {
+if (attrs != null && attrs.size() > 0) {
 	%>
-	Columns:<br/>
-	<%for (int i = 0; i < columnNames.size(); i++) { 
-		String s = columnNames.get(i);%>
-	<select id = <%="sel"+i %> name = <%="sel"+i %>>
-	<option value = "U"></option>
-	<option value="A">Attribute</option>
-	<option value="M">Metric</option>
-	</select><%=s %><br/>	
-	<%}
+	attributes:<br/>
 	
-	session.setAttribute("cc", columnNames.size());
+	<%
+		for (String s: attrs) {
+			%>	
+			<input type = "checkbox" name="ats" id=<%=s %> value=<%=s %>><%=s %><br/>		
+			<%
+		}
+	%>
+	
+	<%
+}
+
+if (metrics != null && metrics.size() > 0) {
+	%>
+	metrics:<br/>
+	
+	<%
+		for (String s: metrics) {
+			%>	
+			<input type = "checkbox" name="mts" id=<%=s %> value=<%=s %>><%=s %><br/>		
+			<%
+		}
+	%>
+	
+	<%
 }
 
 UUID uuid = (UUID)request.getAttribute("uuid");

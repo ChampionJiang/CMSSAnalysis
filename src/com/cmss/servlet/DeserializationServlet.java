@@ -58,7 +58,9 @@ public class DeserializationServlet extends HttpServlet{
 			try {
 				RawTable table = (RawTable) ois.readObject();
 				
-				req.setAttribute("cns", table.getColumnNames());
+				req.setAttribute("attrs", table.getAttributes());
+				req.setAttribute("metrics", table.getMetrics());
+				//req.setAttribute("cns", table.getColumnNames());
 				
 				@SuppressWarnings("unchecked")
 				Map<UUID, RawTable> tables = (Map<UUID, RawTable>) session.getAttribute("tables");

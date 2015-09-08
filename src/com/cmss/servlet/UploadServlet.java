@@ -81,10 +81,11 @@ public class UploadServlet extends HttpServlet {
 				req.setAttribute("uuid", uuid);
 				
 				req.getRequestDispatcher( "Import.jsp").forward(req,resp); 
-				req.setAttribute("table1", table.toJSON());
-				String root = req.getSession().getServletContext().getRealPath("/") ;
+				
+				//req.setAttribute("table1", table.toJSON());
+				//String root = req.getSession().getServletContext().getRealPath("/") ;
 						
-				this.saveJSON(root, table);
+				//this.saveJSON(root, table);
 
 		} catch (ObjectAlreadyInitializedException | SmartUploadException e) {
 			// TODO Auto-generated catch block

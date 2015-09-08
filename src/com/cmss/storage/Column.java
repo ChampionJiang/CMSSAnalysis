@@ -20,7 +20,8 @@ public abstract class Column implements Serializable{
 		DATETIME
 	}
 	
-	enum ColumnType{
+	public static enum ColumnType{
+		RESERVED,
 		ATTRIBUTE,
 		METRIC
 	}

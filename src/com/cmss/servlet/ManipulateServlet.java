@@ -41,29 +41,25 @@ public class ManipulateServlet extends HttpServlet {
 			
 			SubsetEngine se = new SubsetEngine();
 			
-			int columnCount = (int)session.getAttribute("cc");
-			
-			ArrayList<Integer> a = new ArrayList<Integer>();
-			ArrayList<Integer> m = new ArrayList<Integer>();
-			for (int i = 0; i < columnCount; i++) {
-				String s = req.getParameter("sel"+i);
+			String[] attributes = req.getParameterValues("ats");
+			String[] metrics = req.getParameterValues("mts");
 				
-				if (s.equals("A")) {
-					a.add(i);
-				}
-				
-				if (s.equals("M")) {
-					m.add(i);
-				}
+			Integer[] attrs = new Integer[attributes == null ? 0 :attributes.length];
+			for (int i = 0; i < attrs.length; i++) {
+				attrs[i] = table.findColumnByName(attributes[i]);
 			}
-			Integer[] attrs = new Integer[a.size()];
-			attrs = a.toArray(attrs);
 			
-			Integer []metrics = new Integer[m.size()];
-			metrics = m.toArray(metrics);
+			Integer []mts = new Integer[metrics == null ? 0 :metrics.length];
+			for (int i = 0; i < mts.length; i++) {
+				mts[i] = table.findColumnByName(metrics[i]);
+			}
 			
-			result = se.subset(table, attrs, metrics);
-			
+//			
+//			Integer []metrics = new Integer[m.size()];
+//			metrics = m.toArray(metrics);
+//			
+			result = se.subset(table, attrs, mts);
+//			
 			req.setAttribute("table1", table.toJSON());
 			req.setAttribute("table2", result.toJSON());
 			req.getRequestDispatcher( "Import.jsp").forward(req,resp); 
