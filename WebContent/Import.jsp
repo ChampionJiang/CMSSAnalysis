@@ -83,7 +83,7 @@ if (metrics != null && metrics.size() > 0) {
 	<%
 		for (String s: metrics) {
 			%>	
-			<input type = "checkbox" name="mts" id=<%=s %> value=<%=s %>><%=s %><br/>		
+			<input type = "checkbox" name="mts" id=<%=s %> value=<%="\""+s+"\"" %>><%=s %><br/>		
 			<%
 		}
 	%>

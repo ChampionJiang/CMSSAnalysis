@@ -47,11 +47,13 @@ public class DeserializationServlet extends HttpServlet{
 	public void jspVersion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		String filename = req.getParameter("fls");
-		System.out.println(filename);
+		
 		//session.getAttribute(arg0)
 		String root = session.getServletContext().getRealPath("/") ;
 		
 		if (filename != null) {
+			System.out.println(filename);
+			
 			FileInputStream fis = new FileInputStream(root+"caches/"+filename);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
@@ -85,6 +87,7 @@ public class DeserializationServlet extends HttpServlet{
 			
 			ois.close();
 		} else {
+			
 			req.setAttribute("files", this.getFiles(root));
 			req.getRequestDispatcher( "Import.jsp").forward(req,resp);
 		}

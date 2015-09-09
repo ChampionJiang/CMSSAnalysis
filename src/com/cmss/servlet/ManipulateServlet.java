@@ -26,6 +26,13 @@ public class ManipulateServlet extends HttpServlet {
 	private void jspVersion(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		
+//		String[] s = req.getParameterValues("ttttt");
+//		
+//		for (String ss:s)System.out.println(ss);
+//		
+//		if (1>0)
+//		return;
+		
 		@SuppressWarnings("unchecked")
 		Map<UUID, RawTable> tables = (Map<UUID, RawTable>) session.getAttribute("tables");
 		
@@ -35,6 +42,8 @@ public class ManipulateServlet extends HttpServlet {
 		if (tables.containsKey(uuid)) {
 			table = tables.get(uuid);
 		}
+		
+		
 		
 		RawTable result = null;
 		if (table != null) {
