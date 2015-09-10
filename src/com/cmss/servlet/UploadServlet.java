@@ -52,7 +52,7 @@ public class UploadServlet extends HttpServlet {
 		writer.close();
 		writerStream.close();
 	}
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, java.io.IOException {
 		if (true) {
 			this.jspVersion(req, resp);
 		}

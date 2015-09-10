@@ -37,11 +37,9 @@ Name:<input type="text" name="saveAs">
 <input type="submit" name="Save" value="publish"/>
 </form>
 
-<form id="cac" action="deserialize" name="form3">
+<form id="cac" action="deserialize" method = "post" name="form3">
 <input type="submit" name="Check Available Caches" value="Check Available Caches"/>
-</form>
 
-<form id="load" action="deserialize" name = "form4">
 <%
 List<String> fileNames = (List<String>) request.getAttribute("files");%>
 existing files:<br/>
@@ -68,7 +66,7 @@ if (attrs != null && attrs.size() > 0) {
 	<%
 		for (String s: attrs) {
 			%>	
-			<input type = "checkbox" name="ats" id=<%=s %> value=<%=s %>><%=s %><br/>		
+			<input type = "checkbox" name="ats" id=<%=s %> value=<%="\""+s+"\"" %>><%=s %><br/>		
 			<%
 		}
 	%>

@@ -105,8 +105,7 @@ public class RawTable implements Serializable {
 	}
 	
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
 		for(Column c: columns) {
@@ -117,10 +116,15 @@ public class RawTable implements Serializable {
 		return sb.toString();
 	}
 	
-	public String toJSON()
-	{
-		JSONArray table = new JSONArray();
+	public String toJSON(boolean grid) {
+		if (grid)
+			return toJSON();
 		
+		return "";
+	}
+	
+	public String toJSON() {
+		JSONArray table = new JSONArray();
 		
 		for (int r = 0; r < rowCount; r++){
 			JSONObject row = new JSONObject();

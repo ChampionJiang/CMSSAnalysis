@@ -69,7 +69,7 @@ public class ManipulateServlet extends HttpServlet {
 //			
 			result = se.subset(table, attrs, mts);
 //			
-			req.setAttribute("table1", table.toJSON());
+			//req.setAttribute("table1", table.toJSON());
 			req.setAttribute("table2", result.toJSON());
 			req.getRequestDispatcher( "Import.jsp").forward(req,resp); 
 		} else {
@@ -77,7 +77,7 @@ public class ManipulateServlet extends HttpServlet {
 		}
 	}
 	
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		if (true) {
 			this.jspVersion(req, resp);

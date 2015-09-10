@@ -38,7 +38,7 @@ public class DeserializationServlet extends HttpServlet{
 		}
 		return list;
 	}
-	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if (true) {
 			this.jspVersion(req, resp);
 		}

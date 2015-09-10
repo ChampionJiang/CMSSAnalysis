@@ -37,7 +37,7 @@ public class SerializationServlet extends HttpServlet {
 		oos.close();
 	}
 	
-	public void service(HttpServletRequest req, HttpServletResponse resp)  throws IOException, ServletException {
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)  throws IOException, ServletException {
 		if (true) {
 			this.jspVersion(req, resp);
 		}
