@@ -1,5 +1,6 @@
 import re  
 import urllib  
+from bs4 import BeautifulSoup
 #coding=utf-8
   
 def getHtml(url):  
@@ -49,6 +50,40 @@ def getShangJia(html):
 #html = getHtml("http://hz.meituan.com/shop/2410992")
 
 #html = getHtml("http://hz.meituan.com/shop/707799")
-html=getHtml("http://hz.meituan.com/category/meishi/all/page2")
+html=getHtml("http://hz.meituan.com/category/meishi")
 #print html
-print getShangJia(html)  
+#print getShangJia(html)
+
+soup=BeautifulSoup(html, 'html.parser')
+#print html
+#print soup.title
+#print soup.title.name
+#print soup.p
+div = soup.find_all('div',{'class': 'poi-tile-nodeal'})
+
+#print div
+n=0
+for d in div:
+   print d
+   n=n+1
+print n
+#lis=div.findAll('li', {'class': 'next'})
+
+pattern=r'href="(.*?)"'
+urlreg=re.compile(pattern)
+#for li in lis:
+ #   link=li.find('a')
+    
+  #  url=link['href']
+   # print url;
+
+#pattern=r'href="(.*?)"'
+#urlreg=re.compile(pattern)
+#urls=re.findall(urlreg,div)
+
+#for url in urls:
+ #   print url
+
+#for line in div:
+   # print line
+#print soup.prettify()  
