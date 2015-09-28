@@ -90,18 +90,26 @@ public class SubsetEngine {
 	}
 	
 	public static void main(String[] args) throws ObjectAlreadyInitializedException, IOException {
-		ExcelImport excelimport = new ExcelImport("test.xlsx");
+		Integer int1 = 100;
+		Integer int2 = 100;
+		System.out.println(int1==int2);
 		
-		RawTable t1 = excelimport.Transform();
-		SubsetEngine se = new SubsetEngine();
-		Integer attrs[] = {0,1};
-		Integer metrics[] = {4};
-		RawTable t2 = se.subset(t1, attrs, metrics);
+		Integer int3 = 200;
+		Integer int4 =  200;
 		
-		System.out.println("Start");
-		System.out.println(t1.toJSON());
-		System.out.println("---------------");
-		System.out.println(t2.toJSON());
+		System.out.println(int3 == int4);
+//		ExcelImport excelimport = new ExcelImport("test.xlsx");
+//		
+//		RawTable t1 = excelimport.Transform();
+//		SubsetEngine se = new SubsetEngine();
+//		Integer attrs[] = {0,1};
+//		Integer metrics[] = {4};
+//		RawTable t2 = se.subset(t1, attrs, metrics);
+//		
+//		System.out.println("Start");
+//		System.out.println(t1.toJSON());
+//		System.out.println("---------------");
+//		System.out.println(t2.toJSON());
 		System.out.println("finished");
 	}
 }

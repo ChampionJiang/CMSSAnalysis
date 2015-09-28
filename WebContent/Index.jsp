@@ -15,7 +15,7 @@ Please select the file to upload
 
 </form>
 
-<form id="save" action="serialize" name="form2">
+<form id="save" action="serialize" method = "post" name="form2">
 <%
 
 List<String> columnNames = (List<String>) request.getAttribute("cns");
@@ -33,7 +33,7 @@ if (columnNames != null) {
 	session.setAttribute("cc", columnNames.size());
 }
 %>
-Name:<input type="text" name="saveAs">
+Name:<input type="text" method="post" name="saveAs">
 <input type="submit" name="Save" value="publish"/>
 </form>
 

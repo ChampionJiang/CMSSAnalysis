@@ -19,7 +19,7 @@ public class Tuple implements Comparable<Object>{
 	}
 
 	public boolean equals(Object obj) { 
-		if (!(obj instanceof Tuple))
+		if (obj.getClass() != Tuple.class)
 			return false;
 		
 		Tuple tuple = (Tuple)obj;
