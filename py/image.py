@@ -46,44 +46,74 @@ def getShangJia(html):
         print url
         x+=1
     return x
-#html = getHtml("http://tieba.baidu.com/p/2460150866")  
-#html = getHtml("http://hz.meituan.com/shop/2410992")
 
-#html = getHtml("http://hz.meituan.com/shop/707799")
-html=getHtml("http://hz.meituan.com/category/meishi")
-#print html
-#print getShangJia(html)
+def fun():
+	#html = getHtml("http://tieba.baidu.com/p/2460150866")  
+	#html = getHtml("http://www.meituan.com/shop/18620")
 
-soup=BeautifulSoup(html, 'html.parser')
-#print html
-#print soup.title
-#print soup.title.name
-#print soup.p
-div = soup.find_all('div',{'class': 'poi-tile-nodeal'})
+	#html = getHtml("http://hz.meituan.com/shop/707799")
+	html=getHtml("http://hz.meituan.com/category/meishi")
+		#print html
+	return html
+	#print getShangJia(html)
+	#print getItem(html)
 
-#print div
-n=0
-for d in div:
-   print d
-   n=n+1
-print n
-#lis=div.findAll('li', {'class': 'next'})
+def main():
+        html=fun()
+	soup=BeautifulSoup(html, 'html.parser')
+	#print html
+	#print soup.title
+	#print soup.title.name
+	#print soup.p
+	div = soup.find_all('div',{'class': 'poi-tile-nodeal'})
+	n=0
+	for d in div:
+	   cf = d.find('div', {'class':'basic cf'})
+	   
+	   a=cf.a
+	   
+	   print a.get_text()
+	   
+	   url = a.get('href').split('#')[0]
+           print url
 
-pattern=r'href="(.*?)"'
-urlreg=re.compile(pattern)
-#for li in lis:
- #   link=li.find('a')
-    
-  #  url=link['href']
-   # print url;
+           tagList=d.find('div',{'class':'tag-list'})
+           tags=tagList.find_all('a')
+           for tag in tags:
+               print tag.get_text()
 
-#pattern=r'href="(.*?)"'
-#urlreg=re.compile(pattern)
-#urls=re.findall(urlreg,div)
+           rate=d.find('div',{'class':'rate'})
+           print rate.find('span',{'class':'num'}).get_text()
 
-#for url in urls:
- #   print url
+           money=d.find('div',{'class':'poi-tile__money'})
+           avg = money.find('span',{'class':'price'})
+           
+           if avg is not None:
+               print avg.get_text()
+           
+           pricef2=money.find('span',{'value'}).get_text()
+           print pricef2.split(';')[-1]
+	   n=n+1
+	print n
+	#lis=div.findAll('li', {'class': 'next'})
 
-#for line in div:
-   # print line
-#print soup.prettify()  
+	pattern=r'href="(.*?)"'
+	urlreg=re.compile(pattern)
+	#for li in lis:
+	 #   link=li.find('a')
+	    
+	  #  url=link['href']
+	   # print url;
+
+	#pattern=r'href="(.*?)"'
+	#urlreg=re.compile(pattern)
+	#urls=re.findall(urlreg,div)
+
+	#for url in urls:
+	 #   print url
+
+	#for line in div:
+	   # print line
+	#print soup.prettify() 
+
+main() 
