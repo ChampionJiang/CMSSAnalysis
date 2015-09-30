@@ -1,7 +1,10 @@
+import json
+import urlparse
 import re  
+import sys,codecs
 import urllib  
 from bs4 import BeautifulSoup
-#coding=utf-8
+#coding:gbk2312
   
 def getHtml(url):  
     page = urllib.urlopen(url)  
@@ -58,62 +61,70 @@ def fun():
 	#print getShangJia(html)
 	#print getItem(html)
 
-def main():
-        html=fun()
+def convert(str):
+	if not isinstance(str, unicode):
+		str = unicode(str, 'utf-8')
+	return str.encode('utf-8');
+
+def getNextPage(soup):
+	paginator = soup.find('div',{'class':'paginator-wrapper'})
+	next = paginator.find('li',{'class':'next'})
+	url = next.a.get('href')
+	baseurl='http://hz.meituan.com/category/meishi'
+	return urlparse.urljoin(baseurl, url);
+
+def func():
+	html=fun()
 	soup=BeautifulSoup(html, 'html.parser')
-	#print html
-	#print soup.title
-	#print soup.title.name
-	#print soup.p
+	print getNextPage(soup)
+
+def saveToJSON(merchants):
+	output = open('merchants.info', 'w')
+	
+	output.writelines(convert(json.dumps(merchants,ensure_ascii=True,indent=1, encoding='utf-8')))
+	
+	output.close()
+	
+def main():
+	
+	html=fun()
+	soup=BeautifulSoup(html, 'html.parser')
+
+	merchants=[]
+
 	div = soup.find_all('div',{'class': 'poi-tile-nodeal'})
-	n=0
+	
 	for d in div:
-	   cf = d.find('div', {'class':'basic cf'})
-	   
-	   a=cf.a
-	   
-	   print a.get_text()
-	   
-	   url = a.get('href').split('#')[0]
-           print url
+		cf = d.find('div', {'class':'basic cf'})
+		
+		merchant = {}	
+		merchant['name'] = convert(cf.a.get_text());
+		merchant['url']=cf.a.get('href').split('#')[0]
 
-           tagList=d.find('div',{'class':'tag-list'})
-           tags=tagList.find_all('a')
-           for tag in tags:
-               print tag.get_text()
+		tagList=d.find('div',{'class':'tag-list'})
+		tags=[]
+		for tag in tagList.find_all('a'):
+			tags.append(convert(tag.get_text()))
 
-           rate=d.find('div',{'class':'rate'})
-           print rate.find('span',{'class':'num'}).get_text()
+		merchant['tag'] = tags;
+		
+		rate= d.find('div',{'class':'rate'}).find('span',{'class':'num'}).get_text()
+		merchant['rate'] = int(rate);
 
-           money=d.find('div',{'class':'poi-tile__money'})
-           avg = money.find('span',{'class':'price'})
-           
-           if avg is not None:
-               print avg.get_text()
-           
-           pricef2=money.find('span',{'value'}).get_text()
-           print pricef2.split(';')[-1]
-	   n=n+1
-	print n
-	#lis=div.findAll('li', {'class': 'next'})
+		money = d.find('div',{'class':'poi-tile__money'})
+		avg = money.find('span',{'class':'price'})
 
-	pattern=r'href="(.*?)"'
-	urlreg=re.compile(pattern)
-	#for li in lis:
-	 #   link=li.find('a')
-	    
-	  #  url=link['href']
-	   # print url;
+		if avg is not None:
+			average= convert(avg.get_text())
+			merchant['avg']=average
 
-	#pattern=r'href="(.*?)"'
-	#urlreg=re.compile(pattern)
-	#urls=re.findall(urlreg,div)
+		price= money.find('span',{'value'}).get_text().split(';')[-1]
 
-	#for url in urls:
-	 #   print url
-
-	#for line in div:
-	   # print line
-	#print soup.prettify() 
-
+		merchant['price'] = price
+		
+		merchants.append(merchant);
+	
+	
+	saveToJSON(merchants)
+	
 main() 
