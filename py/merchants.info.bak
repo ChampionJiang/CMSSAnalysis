@@ -1,0 +1,352 @@
+[
+    {
+        "name": "芭菲盛宴", 
+        "url": "http://www.meituan.com/shop/2410992", 
+        "price": "¥128", 
+        "rate": 17848, 
+        "tag": [
+            "自助餐", 
+            "钱江新城"
+        ], 
+        "avg": "¥163"
+    }, 
+    {
+        "name": "锅内锅外（天虹店）", 
+        "url": "http://www.meituan.com/shop/5340958", 
+        "price": "¥69", 
+        "rate": 20113, 
+        "tag": [
+            "火锅", 
+            "天虹购物中心"
+        ], 
+        "avg": "¥78"
+    }, 
+    {
+        "name": "锅内锅外（凤起店）", 
+        "url": "http://www.meituan.com/shop/4823056", 
+        "price": "69", 
+        "rate": 28482, 
+        "tag": [
+            "火锅", 
+            "凤起路沿线"
+        ], 
+        "avg": "¥75"
+    }, 
+    {
+        "name": "七欣天（临平店）", 
+        "url": "http://www.meituan.com/shop/1493411", 
+        "price": "85", 
+        "rate": 7465, 
+        "tag": [
+            "火锅", 
+            "临平"
+        ], 
+        "avg": "¥93"
+    }, 
+    {
+        "name": "娃哈哈同乐大酒店", 
+        "url": "http://www.meituan.com/shop/683585", 
+        "price": "88", 
+        "rate": 4133, 
+        "tag": [
+            "江浙菜", 
+            "庆春路沿线"
+        ], 
+        "avg": "¥58"
+    }, 
+    {
+        "name": "春暖花开（万塘店）", 
+        "url": "http://www.meituan.com/shop/1508405", 
+        "price": "57", 
+        "rate": 24547, 
+        "tag": [
+            "烧烤烤肉", 
+            "万塘路"
+        ], 
+        "avg": "¥56"
+    }, 
+    {
+        "name": "友好饭店西湖旋转餐厅", 
+        "url": "http://www.meituan.com/shop/18620", 
+        "price": "188", 
+        "rate": 4459, 
+        "tag": [
+            "自助餐", 
+            "平海路"
+        ], 
+        "avg": "¥240"
+    }, 
+    {
+        "name": "川味观（中山北路店）", 
+        "url": "http://www.meituan.com/shop/684068", 
+        "price": "85", 
+        "rate": 4516, 
+        "tag": [
+            "火锅", 
+            "下城区"
+        ], 
+        "avg": "¥65"
+    }, 
+    {
+        "name": "小猪头自助火锅烧烤", 
+        "url": "http://www.meituan.com/shop/692464", 
+        "price": "59", 
+        "rate": 7584, 
+        "tag": [
+            "火锅", 
+            "江干区"
+        ], 
+        "avg": "¥62"
+    }, 
+    {
+        "name": "九井精致料理（湖滨路店）", 
+        "url": "http://www.meituan.com/shop/684069", 
+        "price": "218", 
+        "rate": 7548, 
+        "tag": [
+            "自助餐", 
+            "湖滨"
+        ], 
+        "avg": "¥144"
+    }, 
+    {
+        "name": "戈斯汀自助烤肉", 
+        "url": "http://www.meituan.com/shop/5530592", 
+        "price": "49", 
+        "rate": 30694, 
+        "tag": [
+            "烧烤烤肉", 
+            "下沙"
+        ], 
+        "avg": "¥55"
+    }, 
+    {
+        "name": "来品煲（邱山大街品记煲店）", 
+        "url": "http://www.meituan.com/shop/2779679", 
+        "price": "55", 
+        "rate": 9073, 
+        "tag": [
+            "其他美食", 
+            "临平"
+        ], 
+        "avg": "¥44"
+    }, 
+    {
+        "name": "巴菲牛排", 
+        "url": "http://www.meituan.com/shop/4556429", 
+        "price": "39", 
+        "rate": 23537, 
+        "tag": [
+            "西餐", 
+            "市心南路"
+        ], 
+        "avg": "¥55"
+    }, 
+    {
+        "url": "http://www.meituan.com/shop/1111415", 
+        "rate": 10410, 
+        "tag": [
+            "烧烤烤肉", 
+            "市心南路"
+        ], 
+        "price": "39.8", 
+        "name": "相约春天自助烤肉火锅"
+    }, 
+    {
+        "name": "醉乾楼海鲜牛排自助餐厅", 
+        "url": "http://www.meituan.com/shop/41427082", 
+        "price": "53.9", 
+        "rate": 4227, 
+        "tag": [
+            "烧烤烤肉", 
+            "火车东站"
+        ], 
+        "avg": "¥62"
+    }, 
+    {
+        "name": "慧娟面馆.餐厅（新天地旺角城店）", 
+        "url": "http://www.meituan.com/shop/41060045", 
+        "price": "39", 
+        "rate": 7268, 
+        "tag": [
+            "江浙菜", 
+            "旺角城/银隆百货"
+        ], 
+        "avg": "¥45"
+    }, 
+    {
+        "name": "弄堂里（下沙店）", 
+        "url": "http://www.meituan.com/shop/42436745", 
+        "price": "47", 
+        "rate": 6077, 
+        "tag": [
+            "江浙菜", 
+            "下沙"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "新白鹿餐厅（西湖银泰店）", 
+        "url": "http://www.meituan.com/shop/699298", 
+        "price": "95", 
+        "rate": 1617, 
+        "tag": [
+            "江浙菜", 
+            "西湖银泰"
+        ], 
+        "avg": "¥48"
+    }, 
+    {
+        "name": "吴哥厨房（和达店）", 
+        "url": "http://www.meituan.com/shop/702721", 
+        "price": "42", 
+        "rate": 3066, 
+        "tag": [
+            "江浙菜", 
+            "下沙"
+        ], 
+        "avg": "¥49"
+    }, 
+    {
+        "name": "雷迪森铂丽大饭店&middot;普罗旺斯餐厅", 
+        "url": "http://www.meituan.com/shop/5103230", 
+        "price": "218", 
+        "rate": 1145, 
+        "tag": [
+            "自助餐", 
+            "市心北路"
+        ], 
+        "avg": "¥223"
+    }, 
+    {
+        "name": "尚品宫纸上烧烤（三墩香港城店）", 
+        "url": "http://www.meituan.com/shop/4672294", 
+        "price": "48", 
+        "rate": 8481, 
+        "tag": [
+            "烧烤烤肉", 
+            "三墩镇"
+        ], 
+        "avg": "¥49"
+    }, 
+    {
+        "name": "帕拉丁自助烤肉", 
+        "url": "http://www.meituan.com/shop/42235630", 
+        "price": "59", 
+        "rate": 9454, 
+        "tag": [
+            "烧烤烤肉", 
+            "庆春路沿线"
+        ], 
+        "avg": "¥59"
+    }, 
+    {
+        "url": "http://www.meituan.com/shop/1089073", 
+        "rate": 10038, 
+        "tag": [
+            "烧烤烤肉", 
+            "临平"
+        ], 
+        "price": "50", 
+        "name": "韩善宫自助烧烤"
+    }, 
+    {
+        "name": "韩千炉韩式自助烤肉（文三路店）", 
+        "url": "http://www.meituan.com/shop/4701727", 
+        "price": "21", 
+        "rate": 7830, 
+        "tag": [
+            "烧烤烤肉", 
+            "文三路沿线"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "火炉火&bull;詹姆思芝士排骨", 
+        "url": "http://www.meituan.com/shop/41109624", 
+        "price": "158", 
+        "rate": 2508, 
+        "tag": [
+            "火锅", 
+            "古墩路沿线"
+        ], 
+        "avg": "¥70"
+    }, 
+    {
+        "name": "嗨漾超级自助美食（星光店）", 
+        "url": "http://www.meituan.com/shop/3298487", 
+        "price": "59", 
+        "rate": 23230, 
+        "tag": [
+            "烧烤烤肉", 
+            "星光大道"
+        ], 
+        "avg": "¥68"
+    }, 
+    {
+        "name": "滏山汇海鲜&middot;烤肉自助", 
+        "url": "http://www.meituan.com/shop/40276875", 
+        "price": "59", 
+        "rate": 10455, 
+        "tag": [
+            "海鲜", 
+            "旺角城/银隆百货"
+        ], 
+        "avg": "¥64"
+    }, 
+    {
+        "name": "吴哥厨房（文津店）", 
+        "url": "http://www.meituan.com/shop/698116", 
+        "price": "40", 
+        "rate": 4781, 
+        "tag": [
+            "江浙菜", 
+            "下沙"
+        ], 
+        "avg": "¥49"
+    }, 
+    {
+        "name": "海底捞火锅（庆春路店）", 
+        "url": "http://www.meituan.com/shop/2669201", 
+        "price": "85", 
+        "rate": 11254, 
+        "tag": [
+            "火锅", 
+            "庆春路沿线"
+        ], 
+        "avg": "¥102"
+    }, 
+    {
+        "name": "金橘餐厅（杭大店）", 
+        "url": "http://www.meituan.com/shop/1523791", 
+        "price": "45", 
+        "rate": 6274, 
+        "tag": [
+            "江浙菜", 
+            "西湖北线/黄龙"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "翰坂自助餐", 
+        "url": "http://www.meituan.com/shop/4689539", 
+        "price": "49", 
+        "rate": 10221, 
+        "tag": [
+            "自助餐", 
+            "下沙"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "尚可一品烤肉火锅自助餐厅（杭州大关店）", 
+        "url": "http://www.meituan.com/shop/42282675", 
+        "price": "19", 
+        "rate": 2841, 
+        "tag": [
+            "自助餐", 
+            "大关"
+        ], 
+        "avg": "¥56"
+    }
+]

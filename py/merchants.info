@@ -1,353 +1,352 @@
 [
- {
-  "name": "\u82ad\u83f2\u76db\u5bb4", 
-  "url": "http://www.meituan.com/shop/2410992", 
-  "price": "\u00a5256", 
-  "rate": 17848, 
-  "tag": [
-   "\u81ea\u52a9\u9910", 
-   "\u94b1\u6c5f\u65b0\u57ce"
-  ], 
-  "avg": "\u00a5163"
- }, 
- {
-  "name": "\u9505\u5185\u9505\u5916\uff08\u5929\u8679\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/5340958", 
-  "price": "\u00a569", 
-  "rate": 20113, 
-  "tag": [
-   "\u706b\u9505", 
-   "\u5929\u8679\u8d2d\u7269\u4e2d\u5fc3"
-  ], 
-  "avg": "\u00a578"
- }, 
- {
-  "name": "\u9505\u5185\u9505\u5916\uff08\u51e4\u8d77\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/4823056", 
-  "price": "69", 
-  "rate": 28482, 
-  "tag": [
-   "\u706b\u9505", 
-   "\u51e4\u8d77\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a575"
- }, 
- {
-  "name": "\u5a03\u54c8\u54c8\u540c\u4e50\u5927\u9152\u5e97", 
-  "url": "http://www.meituan.com/shop/683585", 
-  "price": "88", 
-  "rate": 4133, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u5e86\u6625\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a558"
- }, 
- {
-  "name": "\u6625\u6696\u82b1\u5f00\uff08\u4e07\u5858\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/1508405", 
-  "price": "57", 
-  "rate": 24547, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u4e07\u5858\u8def"
-  ], 
-  "avg": "\u00a556"
- }, 
- {
-  "name": "\u53cb\u597d\u996d\u5e97\u897f\u6e56\u65cb\u8f6c\u9910\u5385", 
-  "url": "http://www.meituan.com/shop/18620", 
-  "price": "188", 
-  "rate": 4459, 
-  "tag": [
-   "\u81ea\u52a9\u9910", 
-   "\u5e73\u6d77\u8def"
-  ], 
-  "avg": "\u00a5240"
- }, 
- {
-  "name": "\u5ddd\u5473\u89c2\uff08\u51e4\u8d77\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/683645", 
-  "price": "85", 
-  "rate": 2810, 
-  "tag": [
-   "\u706b\u9505", 
-   "\u51e4\u8d77\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a583"
- }, 
- {
-  "name": "\u5c0f\u732a\u5934\u81ea\u52a9\u706b\u9505\u70e7\u70e4", 
-  "url": "http://www.meituan.com/shop/692464", 
-  "price": "59", 
-  "rate": 7584, 
-  "tag": [
-   "\u706b\u9505", 
-   "\u6c5f\u5e72\u533a"
-  ], 
-  "avg": "\u00a562"
- }, 
- {
-  "name": "\u4e5d\u4e95\u7cbe\u81f4\u6599\u7406\uff08\u6e56\u6ee8\u8def\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/684069", 
-  "price": "218", 
-  "rate": 7548, 
-  "tag": [
-   "\u81ea\u52a9\u9910", 
-   "\u6e56\u6ee8"
-  ], 
-  "avg": "\u00a5144"
- }, 
- {
-  "name": "\u6208\u65af\u6c40\u81ea\u52a9\u70e4\u8089", 
-  "url": "http://www.meituan.com/shop/5530592", 
-  "price": "49", 
-  "rate": 30694, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u4e0b\u6c99"
-  ], 
-  "avg": "\u00a555"
- }, 
- {
-  "name": "\u5df4\u83f2\u725b\u6392", 
-  "url": "http://www.meituan.com/shop/4556429", 
-  "price": "39", 
-  "rate": 23537, 
-  "tag": [
-   "\u897f\u9910", 
-   "\u5e02\u5fc3\u5357\u8def"
-  ], 
-  "avg": "\u00a555"
- }, 
- {
-  "name": "\u9189\u4e7e\u697c\u6d77\u9c9c\u725b\u6392\u81ea\u52a9\u9910\u5385", 
-  "url": "http://www.meituan.com/shop/41427082", 
-  "price": "53.9", 
-  "rate": 4227, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u706b\u8f66\u4e1c\u7ad9"
-  ], 
-  "avg": "\u00a562"
- }, 
- {
-  "name": "\u5f04\u5802\u91cc\uff08\u4e07\u5858\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/1694513", 
-  "price": "47", 
-  "rate": 772, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u6587\u4e09\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a549"
- }, 
- {
-  "name": "\u65b0\u767d\u9e7f\u9910\u5385\uff08\u676d\u5dde\u6e38\u6cf3\u9986\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/694233", 
-  "price": "95", 
-  "rate": 2409, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u6b66\u6797\u5e7f\u573a"
-  ], 
-  "avg": "\u00a548"
- }, 
- {
-  "name": "\u6167\u5a1f\u9762\u9986.\u9910\u5385\uff08\u65b0\u5929\u5730\u65fa\u89d2\u57ce\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/41060045", 
-  "price": "39", 
-  "rate": 7268, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u65fa\u89d2\u57ce/\u94f6\u9686\u767e\u8d27"
-  ], 
-  "avg": "\u00a545"
- }, 
- {
-  "name": "\u96f7\u8fea\u68ee\u94c2\u4e3d\u5927\u996d\u5e97&middot;\u666e\u7f57\u65fa\u65af\u9910\u5385", 
-  "url": "http://www.meituan.com/shop/5103230", 
-  "price": "218", 
-  "rate": 1145, 
-  "tag": [
-   "\u81ea\u52a9\u9910", 
-   "\u5e02\u5fc3\u5317\u8def"
-  ], 
-  "avg": "\u00a5223"
- }, 
- {
-  "name": "\u5434\u54e5\u53a8\u623f\uff08\u548c\u8fbe\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/702721", 
-  "price": "42", 
-  "rate": 3066, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u4e0b\u6c99"
-  ], 
-  "avg": "\u00a549"
- }, 
- {
-  "name": "\u5e15\u62c9\u4e01\u81ea\u52a9\u70e4\u8089", 
-  "url": "http://www.meituan.com/shop/42235630", 
-  "price": "59", 
-  "rate": 9454, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u5e86\u6625\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a559"
- }, 
- {
-  "name": "\u5c1a\u54c1\u5bab\u7eb8\u4e0a\u70e7\u70e4\uff08\u4e09\u58a9\u9999\u6e2f\u57ce\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/4672294", 
-  "price": "48", 
-  "rate": 8481, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u4e09\u58a9\u9547"
-  ], 
-  "avg": "\u00a549"
- }, 
- {
-  "url": "http://www.meituan.com/shop/1089073", 
-  "rate": 10038, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u4e34\u5e73"
-  ], 
-  "price": "50", 
-  "name": "\u97e9\u5584\u5bab\u81ea\u52a9\u70e7\u70e4"
- }, 
- {
-  "name": "\u97e9\u5343\u7089\u97e9\u5f0f\u81ea\u52a9\u70e4\u8089\uff08\u6587\u4e09\u8def\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/4701727", 
-  "price": "49.9", 
-  "rate": 7830, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u6587\u4e09\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a551"
- }, 
- {
-  "name": "\u706b\u7089\u706b&bull;\u8a79\u59c6\u601d\u829d\u58eb\u6392\u9aa8", 
-  "url": "http://www.meituan.com/shop/41109624", 
-  "price": "158", 
-  "rate": 2508, 
-  "tag": [
-   "\u706b\u9505", 
-   "\u53e4\u58a9\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a570"
- }, 
- {
-  "name": "\u65b0\u77f3\u5668\uff08\u548c\u8fbe\u57ce\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/40039865", 
-  "price": "94", 
-  "rate": 3366, 
-  "tag": [
-   "\u65e5\u97e9\u6599\u7406", 
-   "\u4e0b\u6c99"
-  ], 
-  "avg": "\u00a565"
- }, 
- {
-  "name": "\u91d1\u6a58\u9910\u5385\uff08\u676d\u5927\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/1523791", 
-  "price": "45", 
-  "rate": 6274, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u897f\u6e56\u5317\u7ebf/\u9ec4\u9f99"
-  ], 
-  "avg": "\u00a551"
- }, 
- {
-  "name": "\u55e8\u6f3e\u8d85\u7ea7\u81ea\u52a9\u7f8e\u98df\uff08\u661f\u5149\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/3298487", 
-  "price": "59", 
-  "rate": 23230, 
-  "tag": [
-   "\u70e7\u70e4\u70e4\u8089", 
-   "\u661f\u5149\u5927\u9053"
-  ], 
-  "avg": "\u00a568"
- }, 
- {
-  "name": "\u6ecf\u5c71\u6c47\u6d77\u9c9c&middot;\u70e4\u8089\u81ea\u52a9", 
-  "url": "http://www.meituan.com/shop/40276875", 
-  "price": "59", 
-  "rate": 10455, 
-  "tag": [
-   "\u6d77\u9c9c", 
-   "\u65fa\u89d2\u57ce/\u94f6\u9686\u767e\u8d27"
-  ], 
-  "avg": "\u00a564"
- }, 
- {
-  "name": "\u5434\u54e5\u53a8\u623f\uff08\u6587\u6d25\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/698116", 
-  "price": "40", 
-  "rate": 4781, 
-  "tag": [
-   "\u6c5f\u6d59\u83dc", 
-   "\u4e0b\u6c99"
-  ], 
-  "avg": "\u00a549"
- }, 
- {
-  "name": "\u6d77\u5e95\u635e\u706b\u9505\uff08\u5e86\u6625\u8def\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/2669201", 
-  "price": "85", 
-  "rate": 11254, 
-  "tag": [
-   "\u706b\u9505", 
-   "\u5e86\u6625\u8def\u6cbf\u7ebf"
-  ], 
-  "avg": "\u00a5102"
- }, 
- {
-  "name": "\u9633\u5149\u7801\u5934\u6d77\u9c9c\u8c46\u635e\uff08\u6587\u4e00\u8def\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/2404222", 
-  "price": "158", 
-  "rate": 5564, 
-  "tag": [
-   "\u6d77\u9c9c", 
-   "\u6559\u5de5\u8def/\u5b66\u9662\u8def"
-  ], 
-  "avg": "\u00a5147"
- }, 
- {
-  "name": "\u7ff0\u5742\u81ea\u52a9\u9910", 
-  "url": "http://www.meituan.com/shop/4689539", 
-  "price": "49", 
-  "rate": 10221, 
-  "tag": [
-   "\u81ea\u52a9\u9910", 
-   "\u4e0b\u6c99"
-  ], 
-  "avg": "\u00a551"
- }, 
- {
-  "name": "\u5c1a\u53ef\u4e00\u54c1\u70e4\u8089\u706b\u9505\u81ea\u52a9\u9910\u5385\uff08\u676d\u5dde\u5927\u5173\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/42282675", 
-  "price": "49", 
-  "rate": 2841, 
-  "tag": [
-   "\u81ea\u52a9\u9910", 
-   "\u5927\u5173"
-  ], 
-  "avg": "\u00a556"
- }, 
- {
-  "name": "\u77e5\u5473\u89c2\uff08\u6d66\u6cbf\u5e97\uff09", 
-  "url": "http://www.meituan.com/shop/5596370", 
-  "price": "25.5", 
-  "rate": 1718, 
-  "tag": [
-   "\u5c0f\u5403\u5feb\u9910", 
-   "\u8054\u5e84"
-  ], 
-  "avg": "\u00a530"
- }
+    {
+        "name": "锅内锅外（天虹店）", 
+        "url": "http://www.meituan.com/shop/5340958", 
+        "price": "¥69", 
+        "rate": 20113, 
+        "tag": [
+            "火锅", 
+            "天虹购物中心"
+        ], 
+        "avg": "¥78"
+    }, 
+    {
+        "name": "锅内锅外（凤起店）", 
+        "url": "http://www.meituan.com/shop/4823056", 
+        "price": "¥69", 
+        "rate": 28482, 
+        "tag": [
+            "火锅", 
+            "凤起路沿线"
+        ], 
+        "avg": "¥75"
+    }, 
+    {
+        "name": "芭菲盛宴", 
+        "url": "http://www.meituan.com/shop/2410992", 
+        "price": "128", 
+        "rate": 17848, 
+        "tag": [
+            "自助餐", 
+            "钱江新城"
+        ], 
+        "avg": "¥163"
+    }, 
+    {
+        "name": "友好饭店西湖旋转餐厅", 
+        "url": "http://www.meituan.com/shop/18620", 
+        "price": "188", 
+        "rate": 4459, 
+        "tag": [
+            "自助餐", 
+            "平海路"
+        ], 
+        "avg": "¥240"
+    }, 
+    {
+        "name": "七欣天（新塘街店）", 
+        "url": "http://www.meituan.com/shop/87562", 
+        "price": "58", 
+        "rate": 3822, 
+        "tag": [
+            "火锅", 
+            "通惠路沿线"
+        ], 
+        "avg": "¥96"
+    }, 
+    {
+        "name": "弄堂里（下沙店）", 
+        "url": "http://www.meituan.com/shop/42436745", 
+        "price": "47", 
+        "rate": 6077, 
+        "tag": [
+            "江浙菜", 
+            "下沙"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "新白鹿餐厅（西湖银泰店）", 
+        "url": "http://www.meituan.com/shop/699298", 
+        "price": "95", 
+        "rate": 1617, 
+        "tag": [
+            "江浙菜", 
+            "西湖银泰"
+        ], 
+        "avg": "¥48"
+    }, 
+    {
+        "name": "娃哈哈同乐大酒店", 
+        "url": "http://www.meituan.com/shop/683585", 
+        "price": "88", 
+        "rate": 4133, 
+        "tag": [
+            "江浙菜", 
+            "庆春路沿线"
+        ], 
+        "avg": "¥58"
+    }, 
+    {
+        "name": "嗨漾超级自助美食（星光店）", 
+        "url": "http://www.meituan.com/shop/3298487", 
+        "price": "59", 
+        "rate": 23230, 
+        "tag": [
+            "烧烤烤肉", 
+            "星光大道"
+        ], 
+        "avg": "¥68"
+    }, 
+    {
+        "name": "雷迪森铂丽大饭店&middot;普罗旺斯餐厅", 
+        "url": "http://www.meituan.com/shop/5103230", 
+        "price": "218", 
+        "rate": 1145, 
+        "tag": [
+            "自助餐", 
+            "市心北路"
+        ], 
+        "avg": "¥223"
+    }, 
+    {
+        "name": "滏山汇海鲜&middot;烤肉自助", 
+        "url": "http://www.meituan.com/shop/40276875", 
+        "price": "59", 
+        "rate": 10455, 
+        "tag": [
+            "海鲜", 
+            "旺角城/银隆百货"
+        ], 
+        "avg": "¥64"
+    }, 
+    {
+        "name": "小猪头自助火锅烧烤", 
+        "url": "http://www.meituan.com/shop/692464", 
+        "price": "59", 
+        "rate": 7584, 
+        "tag": [
+            "火锅", 
+            "江干区"
+        ], 
+        "avg": "¥62"
+    }, 
+    {
+        "name": "川味观（凤起店）", 
+        "url": "http://www.meituan.com/shop/683645", 
+        "price": "85", 
+        "rate": 2810, 
+        "tag": [
+            "火锅", 
+            "凤起路沿线"
+        ], 
+        "avg": "¥83"
+    }, 
+    {
+        "name": "春暖花开（万塘店）", 
+        "url": "http://www.meituan.com/shop/1508405", 
+        "price": "57", 
+        "rate": 24547, 
+        "tag": [
+            "烧烤烤肉", 
+            "万塘路"
+        ], 
+        "avg": "¥56"
+    }, 
+    {
+        "name": "火炉火&bull;詹姆思芝士排骨", 
+        "url": "http://www.meituan.com/shop/41109624", 
+        "price": "158", 
+        "rate": 2508, 
+        "tag": [
+            "火锅", 
+            "古墩路沿线"
+        ], 
+        "avg": "¥70"
+    }, 
+    {
+        "name": "九井精致料理（湖滨路店）", 
+        "url": "http://www.meituan.com/shop/684069", 
+        "price": "218", 
+        "rate": 7548, 
+        "tag": [
+            "自助餐", 
+            "湖滨"
+        ], 
+        "avg": "¥144"
+    }, 
+    {
+        "name": "海底捞火锅（庆春路店）", 
+        "url": "http://www.meituan.com/shop/2669201", 
+        "price": "85", 
+        "rate": 11254, 
+        "tag": [
+            "火锅", 
+            "庆春路沿线"
+        ], 
+        "avg": "¥102"
+    }, 
+    {
+        "name": "韩千炉韩式自助烤肉（文三路店）", 
+        "url": "http://www.meituan.com/shop/4701727", 
+        "price": "21", 
+        "rate": 7830, 
+        "tag": [
+            "烧烤烤肉", 
+            "文三路沿线"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "吴哥厨房（和达店）", 
+        "url": "http://www.meituan.com/shop/702721", 
+        "price": "40", 
+        "rate": 3066, 
+        "tag": [
+            "江浙菜", 
+            "下沙"
+        ], 
+        "avg": "¥49"
+    }, 
+    {
+        "url": "http://www.meituan.com/shop/1111415", 
+        "rate": 10410, 
+        "tag": [
+            "烧烤烤肉", 
+            "市心南路"
+        ], 
+        "price": "39.8", 
+        "name": "相约春天自助烤肉火锅"
+    }, 
+    {
+        "name": "巴菲牛排", 
+        "url": "http://www.meituan.com/shop/4556429", 
+        "price": "39", 
+        "rate": 23537, 
+        "tag": [
+            "西餐", 
+            "市心南路"
+        ], 
+        "avg": "¥55"
+    }, 
+    {
+        "url": "http://www.meituan.com/shop/1089073", 
+        "rate": 10038, 
+        "tag": [
+            "烧烤烤肉", 
+            "临平"
+        ], 
+        "price": "50", 
+        "name": "韩善宫自助烧烤"
+    }, 
+    {
+        "name": "我鱼你自助餐厅（黄姑山路店）", 
+        "url": "http://www.meituan.com/shop/4076100", 
+        "price": "39.9", 
+        "rate": 4669, 
+        "tag": [
+            "火锅", 
+            "西湖北线/黄龙"
+        ], 
+        "avg": "¥45"
+    }, 
+    {
+        "name": "戈斯汀自助烤肉", 
+        "url": "http://www.meituan.com/shop/5530592", 
+        "price": "49", 
+        "rate": 30694, 
+        "tag": [
+            "烧烤烤肉", 
+            "下沙"
+        ], 
+        "avg": "¥55"
+    }, 
+    {
+        "name": "翰坂自助餐", 
+        "url": "http://www.meituan.com/shop/4689539", 
+        "price": "49", 
+        "rate": 10221, 
+        "tag": [
+            "自助餐", 
+            "下沙"
+        ], 
+        "avg": "¥51"
+    }, 
+    {
+        "name": "十二天堂寿喜烧", 
+        "url": "http://www.meituan.com/shop/6188778", 
+        "price": "168", 
+        "rate": 2041, 
+        "tag": [
+            "火锅", 
+            "湖滨"
+        ], 
+        "avg": "¥185"
+    }, 
+    {
+        "name": "慧娟面馆.餐厅（新天地旺角城店）", 
+        "url": "http://www.meituan.com/shop/41060045", 
+        "price": "39", 
+        "rate": 7268, 
+        "tag": [
+            "江浙菜", 
+            "旺角城/银隆百货"
+        ], 
+        "avg": "¥45"
+    }, 
+    {
+        "name": "食其家（浦沿物美店）", 
+        "url": "http://www.meituan.com/shop/41908729", 
+        "price": "18", 
+        "rate": 1035, 
+        "tag": [
+            "小吃快餐", 
+            "滨江区"
+        ], 
+        "avg": "¥22"
+    }, 
+    {
+        "name": "美拉牛排（和达城店）", 
+        "url": "http://www.meituan.com/shop/42629582", 
+        "price": "59", 
+        "rate": 3215, 
+        "tag": [
+            "自助餐", 
+            "下沙"
+        ], 
+        "avg": "¥65"
+    }, 
+    {
+        "name": "帕拉丁自助烤肉", 
+        "url": "http://www.meituan.com/shop/42235630", 
+        "price": "59", 
+        "rate": 9454, 
+        "tag": [
+            "烧烤烤肉", 
+            "庆春路沿线"
+        ], 
+        "avg": "¥59"
+    }, 
+    {
+        "name": "醉乾楼海鲜牛排自助餐厅", 
+        "url": "http://www.meituan.com/shop/41427082", 
+        "price": "53.9", 
+        "rate": 4227, 
+        "tag": [
+            "烧烤烤肉", 
+            "火车东站"
+        ], 
+        "avg": "¥62"
+    }, 
+    {
+        "name": "一席地鸡窝（西溪印象城店）", 
+        "url": "http://www.meituan.com/shop/2561858", 
+        "price": "1", 
+        "rate": 4239, 
+        "tag": [
+            "火锅", 
+            "西溪"
+        ], 
+        "avg": "¥48"
+    }
 ]

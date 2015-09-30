@@ -1,10 +1,10 @@
+#coding=utf-8
 import json
 import urlparse
 import re  
 import sys,codecs
 import urllib  
 from bs4 import BeautifulSoup
-#coding:gbk2312
   
 def getHtml(url):  
     page = urllib.urlopen(url)  
@@ -64,7 +64,7 @@ def fun():
 def convert(str):
 	if not isinstance(str, unicode):
 		str = unicode(str, 'utf-8')
-	return str.encode('utf-8');
+	return str
 
 def getNextPage(soup):
 	paginator = soup.find('div',{'class':'paginator-wrapper'})
@@ -79,9 +79,37 @@ def func():
 	print getNextPage(soup)
 
 def saveToJSON(merchants):
-	output = open('merchants.info', 'w')
+	output = codecs.open('merchants.info','w')
+	output.writelines(json.dumps(merchants, ensure_ascii=False, indent=4).encode('utf-8'))
+	output.close()
+	return	
+	for merchant in merchants:
+		print '------------'
+		for key in merchant.keys():
+			print key+':'
+			
+			value=merchant[key]
+			if isinstance(value, list):
+				print '['
+				count = len(value)
+				i=0
+				for v in value:
+					print v
+					if i<count:
+						print ','
+				print ']'
+			else:
+				print value
+				if isinstance(value, unicode):
+					output.write(value.encode('utf-8'))
+				else:
+					output.write(str(value))
+				output.write('\n')
+				#print '\n'
 	
-	output.writelines(convert(json.dumps(merchants,ensure_ascii=True,indent=1, encoding='utf-8')))
+	#output = open('merchants.info', 'w')
+	
+	#output.writelines(json.dumps(merchants,ensure_ascii=False).decode('utf-8'))
 	
 	output.close()
 	
@@ -98,24 +126,26 @@ def main():
 		cf = d.find('div', {'class':'basic cf'})
 		
 		merchant = {}	
-		merchant['name'] = convert(cf.a.get_text());
-		merchant['url']=cf.a.get('href').split('#')[0]
+		merchant['name'] = convert(cf.a.get_text().strip());
+		merchant['url']=cf.a.get('href').split('#')[0].strip()
 
+	#	print merchant['name']+'|'+merchant['url']
 		tagList=d.find('div',{'class':'tag-list'})
 		tags=[]
 		for tag in tagList.find_all('a'):
-			tags.append(convert(tag.get_text()))
+		#	print convert(tag.get_text())
+			tags.append(convert(tag.get_text().strip()))
 
 		merchant['tag'] = tags;
 		
-		rate= d.find('div',{'class':'rate'}).find('span',{'class':'num'}).get_text()
+		rate= d.find('div',{'class':'rate'}).find('span',{'class':'num'}).get_text().strip()
 		merchant['rate'] = int(rate);
 
 		money = d.find('div',{'class':'poi-tile__money'})
 		avg = money.find('span',{'class':'price'})
 
 		if avg is not None:
-			average= convert(avg.get_text())
+			average= convert(avg.get_text().strip())
 			merchant['avg']=average
 
 		price= money.find('span',{'value'}).get_text().split(';')[-1]
