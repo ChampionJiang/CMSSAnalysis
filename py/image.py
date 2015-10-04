@@ -7,6 +7,7 @@ import urllib
 from bs4 import BeautifulSoup
   
 def getHtml(url):  
+    print url
     page = urllib.urlopen(url)  
     html = page.read()  
     return html  
@@ -66,59 +67,29 @@ def convert(str):
 		str = unicode(str, 'utf-8')
 	return str
 
-def getNextPage(soup):
+def getNextPage(html):
+	soup=BeautifulSoup(html,'html.parser')
 	paginator = soup.find('div',{'class':'paginator-wrapper'})
 	next = paginator.find('li',{'class':'next'})
+	if next==None:
+		return None;
+
 	url = next.a.get('href')
 	baseurl='http://hz.meituan.com/category/meishi'
 	return urlparse.urljoin(baseurl, url);
 
 def func():
 	html=fun()
-	soup=BeautifulSoup(html, 'html.parser')
-	print getNextPage(soup)
+	print getNextPage(html)
 
 def saveToJSON(merchants):
 	output = codecs.open('merchants.info','w')
 	output.writelines(json.dumps(merchants, ensure_ascii=False, indent=4).encode('utf-8'))
 	output.close()
 	return	
-	for merchant in merchants:
-		print '------------'
-		for key in merchant.keys():
-			print key+':'
-			
-			value=merchant[key]
-			if isinstance(value, list):
-				print '['
-				count = len(value)
-				i=0
-				for v in value:
-					print v
-					if i<count:
-						print ','
-				print ']'
-			else:
-				print value
-				if isinstance(value, unicode):
-					output.write(value.encode('utf-8'))
-				else:
-					output.write(str(value))
-				output.write('\n')
-				#print '\n'
 	
-	#output = open('merchants.info', 'w')
-	
-	#output.writelines(json.dumps(merchants,ensure_ascii=False).decode('utf-8'))
-	
-	output.close()
-	
-def main():
-	
-	html=fun()
+def crawleMerchantInfo(html, merchants):
 	soup=BeautifulSoup(html, 'html.parser')
-
-	merchants=[]
 
 	div = soup.find_all('div',{'class': 'poi-tile-nodeal'})
 	
@@ -129,11 +100,9 @@ def main():
 		merchant['name'] = convert(cf.a.get_text().strip());
 		merchant['url']=cf.a.get('href').split('#')[0].strip()
 
-	#	print merchant['name']+'|'+merchant['url']
 		tagList=d.find('div',{'class':'tag-list'})
 		tags=[]
 		for tag in tagList.find_all('a'):
-		#	print convert(tag.get_text())
 			tags.append(convert(tag.get_text().strip()))
 
 		merchant['tag'] = tags;
@@ -155,6 +124,16 @@ def main():
 		merchants.append(merchant);
 	
 	
-	saveToJSON(merchants)
 	
+def main():
+	
+	url='http://hz.meituan.com/category/meishi'
+	merchants=[]
+
+	while url is not None:
+		html = getHtml(url)
+		crawleMerchantInfo(html, merchants)
+		url = getNextPage(html)
+
+	saveToJSON(merchants)
 main() 
