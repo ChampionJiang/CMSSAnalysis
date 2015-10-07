@@ -12,17 +12,6 @@ def getHtml(url):
     html = page.read()  
     return html  
   
-def getImg(html):  
-    reg = r'src="(.*?\.jpg)" pic_ext'  
-    imgre = re.compile(reg)  
-    imglist = re.findall(imgre,html)  
-    x=0  
-    for imgurl in imglist:  
-        urllib.urlretrieve(imgurl,'%s.jpg' % x)  
-	print imgurl
-        x+=1  
-    return x;  
-
 def getItem(html):
     reg1 = r'\<div class="menu__items"\>\<table.*?\>(.*?)\</table\>';
     reg = r'td class=".*?"\>(.*?)\<span';
@@ -88,7 +77,7 @@ def saveToJSON(merchants):
 	output.close()
 	return	
 	
-def crawleMerchantInfo(html, merchants):
+def crawleMerchantsInfo(html, merchants):
 	soup=BeautifulSoup(html, 'html.parser')
 
 	div = soup.find_all('div',{'class': 'poi-tile-nodeal'})
@@ -123,8 +112,33 @@ def crawleMerchantInfo(html, merchants):
 		
 		merchants.append(merchant);
 	
+def crawleMerchantInfo(html, merchant):
+	soup=BeautifulSoup(html, 'html.parser')
+	summary=soup.find('div',{'class':'summary biz-box fs-section cf'})
+	leftsection=summary.find('div',{'class':'fs-section__left'})
+	reg=r'\<p.*?\>(.*?)\</p\>'
+	phonereg=re.compile(reg)
+	for p in leftsection.findAll('p'):
+		s=str(p)
+		if re.match(phonereg,s) is not None:
+			merchant['phone']=p.get_text().strip()
+		else:
+			merchant['address']=convert(p.find('span',{'class':'geo'}).get_text().strip())
+		
+	rightsection=summary.find('div',{'class':'fs-section__right'})
+	bizlevel=rightsection.find('span',{'class':'biz-level'}).get_text().strip()
+	merchant['bizlevel']=bizlevel
+
+	counts=rightsection.find('div',{'class':'counts'}).findAll('div')
+	merchant['consume_num'] = counts[0].get_text().strip().split()[-1]	
+	merchant['rate_num']= counts[1].get_text().strip().split()[-1]	
 	
+	items=soup.find('div',{'class':'menu__items'})
+	if items is not None:
+		itemslist.findAll('table')[0].get_text()
+		merchant['special'] = itemslist.split()
 	
+
 def main():
 	
 	url='http://hz.meituan.com/category/meishi'
@@ -132,8 +146,13 @@ def main():
 
 	while url is not None:
 		html = getHtml(url)
-		crawleMerchantInfo(html, merchants)
+		crawleMerchantsInfo(html, merchants)
 		url = getNextPage(html)
 
+	for merchant in merchants:
+		url=merchant['url']
+		html=getHtml(url)
+		crawleMerchantInfo(html, merchant)		
+	
 	saveToJSON(merchants)
 main() 
