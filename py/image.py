@@ -1,16 +1,22 @@
+#https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
 #coding=utf-8
 import json
 import urlparse
 import re  
 import sys,codecs
 import urllib  
+import urllib2
+import time
 from bs4 import BeautifulSoup
   
-def getHtml(url):  
-    print url
-    page = urllib.urlopen(url)  
-    html = page.read()  
-    return html  
+def getHtml(inputurl):
+	print inputurl
+	header={'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
+	req = urllib2.Request(url = inputurl, headers=header)
+	html = urllib2.urlopen(req).read()
+	#html = urllib.urlopen(inputurl).read()
+	#print html
+	return html  
   
 def getItem(html):
     reg1 = r'\<div class="menu__items"\>\<table.*?\>(.*?)\</table\>';
@@ -135,9 +141,17 @@ def crawleMerchantInfo(html, merchant):
 	
 	items=soup.find('div',{'class':'menu__items'})
 	if items is not None:
-		itemslist.findAll('table')[0].get_text()
+		itemslist = items.findAll('table')[0].get_text()
 		merchant['special'] = itemslist.split()
+
+	ratelist=soup.find('div',{'class':'ratelist-content cf'})
 	
+	if ratelist is not None:
+		rates = []
+		lis = ratelist.findAll('li')
+		#for li in lis:
+			
+			
 
 def main():
 	
@@ -147,12 +161,19 @@ def main():
 	while url is not None:
 		html = getHtml(url)
 		crawleMerchantsInfo(html, merchants)
+		time.sleep(5)
 		url = getNextPage(html)
+		#url=None
 
 	for merchant in merchants:
 		url=merchant['url']
 		html=getHtml(url)
-		crawleMerchantInfo(html, merchant)		
+		try:
+			crawleMerchantInfo(html, merchant)
+			time.sleep(10)
+		except Exception, e:
+			print e
+			
 	
 	saveToJSON(merchants)
 main() 
