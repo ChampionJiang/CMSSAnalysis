@@ -103,7 +103,7 @@ def crawleMerchantsInfo(html, merchants):
 		merchant['tag'] = tags;
 		
 		rate= d.find('div',{'class':'rate'}).find('span',{'class':'num'}).get_text().strip()
-		merchant['rate'] = int(rate);
+		#merchant['rate'] = int(rate);
 
 		money = d.find('div',{'class':'poi-tile__money'})
 		avg = money.find('span',{'class':'price'})
@@ -136,8 +136,8 @@ def crawleMerchantInfo(html, merchant):
 	merchant['bizlevel']=bizlevel
 
 	counts=rightsection.find('div',{'class':'counts'}).findAll('div')
-	merchant['consume_num'] = counts[0].get_text().strip().split()[-1]	
-	merchant['rate_num']= counts[1].get_text().strip().split()[-1]	
+	merchant['consume_num'] = int(counts[0].get_text().strip().split()[-1])
+	merchant['rate_num']= int(counts[1].get_text().strip().split()[-1])	
 	
 	items=soup.find('div',{'class':'menu__items'})
 	if items is not None:
@@ -147,11 +147,34 @@ def crawleMerchantInfo(html, merchant):
 	ratelist=soup.find('div',{'class':'ratelist-content cf'})
 	
 	if ratelist is not None:
-		rates = []
-		lis = ratelist.findAll('li')
-		#for li in lis:
+		reviews = []
+		numreg=re.compile(r'(\d+)')
+		lis = ratelist.findAll('li', {'class':'J-ratelist-item rate-list__item cf'})
+		for li in lis:
+			review={}
+			userblock=li.find('div',{'class':'user-info-block'}).find('p').findAll('span')
+			review['name']=convert(userblock[0].get_text().strip())
+			review['title']=convert(userblock[1].i.get('title'))
+			
+			review_block=li.find('div',{'class':'review-content-wrapper'})
+			ratestars=str(review_block.find('div',{'class':'info cf'}).span.span.get('style'))
+			review['star']=int(numreg.split(ratestars)[-2])/20	
+		
+			content=review_block.find('div',{'class':'J-normal-view'}).p.get_text().strip().split()[-1]
+			review['content'] = convert(content)	
+			reviews.append(review)
+		merchant['review']=reviews;		
 			
 			
+def test():
+	url='http://localhost:8080/CMSSAnalysis/18620.html'
+	merchant={}
+	html=getHtml(url)
+	crawleMerchantInfo(html, merchant)
+	
+	merchants=[]
+	merchants.append(merchant)
+	saveToJSON(merchants)	
 
 def main():
 	
@@ -165,15 +188,20 @@ def main():
 		url = getNextPage(html)
 		#url=None
 
+	count=len(merchants)
+	index=0
 	for merchant in merchants:
 		url=merchant['url']
 		html=getHtml(url)
 		try:
+			print str(index)+'/'+str(count)
 			crawleMerchantInfo(html, merchant)
+			index=index+1
 			time.sleep(10)
 		except Exception, e:
 			print e
 			
 	
 	saveToJSON(merchants)
-main() 
+
+test()
